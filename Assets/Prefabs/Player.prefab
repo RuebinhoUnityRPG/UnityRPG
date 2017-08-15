@@ -444,6 +444,7 @@ GameObject:
   - component: {fileID: 136186274708744286}
   - component: {fileID: 114953672687467316}
   - component: {fileID: 114481575087680000}
+  - component: {fileID: 114291623633048312}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2485,6 +2486,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114291623633048312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1296220582060408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b125caf8891d444bc0a089d8636971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkMoveStopRadius: 0.2
 --- !u!114 &114481575087680000
 MonoBehaviour:
   m_ObjectHideFlags: 1

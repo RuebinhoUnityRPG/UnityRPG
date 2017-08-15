@@ -1812,22 +1812,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4037782333894134, guid: fab0b010bae7be04e811afa1bd1ee56e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 6.86
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037782333894134, guid: fab0b010bae7be04e811afa1bd1ee56e, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0.4108146
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037782333894134, guid: fab0b010bae7be04e811afa1bd1ee56e, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.91171896
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037782333894134, guid: fab0b010bae7be04e811afa1bd1ee56e, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 48.512
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fab0b010bae7be04e811afa1bd1ee56e, type: 2}
   m_IsPrefabParent: 0
@@ -3073,35 +3057,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e5e73ce0dcde5f34086faacb51b4d9e2, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1875212333 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1564140162662030, guid: fab0b010bae7be04e811afa1bd1ee56e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1142376959}
---- !u!114 &1875212336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1875212333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4dc41da45c7dad4cac53d5077939d8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1875212337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1875212333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6a073ed37496884d8508bef38db398e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerPriorities: 0900000008000000
-  distanceToBackground: 100
 --- !u!1001 &1880023543
 Prefab:
   m_ObjectHideFlags: 0
