@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
         currentClickTarget = transform.position;
     }
 
+    // TODO fix issue with combining click to move and WASD speed
+
     // Fixed update is called in sync with physics
     private void FixedUpdate()
     {
@@ -35,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
                 default:
                     print("unexpected layer clicked");
                     return;
-
             }
         }
         var playerToClickPoint =  currentClickTarget - transform.position;
