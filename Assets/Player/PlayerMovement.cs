@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            ProcessMouseMovement(); // Mouse movement
+            //ProcessMouseMovement(); // Mouse movement
         }
 
     }
@@ -58,28 +58,28 @@ public class PlayerMovement : MonoBehaviour
         thirdPersonCharacter.Move(movement, false, false);
     }
 
-    private void ProcessMouseMovement()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            clickPoint = cameraRaycaster.hit.point;
+    //private void ProcessMouseMovement()
+    //{
+    //    if (Input.GetMouseButton(0))
+    //    {
+    //        clickPoint = cameraRaycaster.hit.point;
 
-            switch (cameraRaycaster.layerHit)
-            {
-                case Layer.Walkable:
-                    currentDestination = ShortDestination(clickPoint, walkMoveStopRadius);  // So not set in default case
-                    break;
-                case Layer.Enemy:
-                    currentDestination = ShortDestination(clickPoint, attackMoveStopRadius);  // run not as far when attacking
-                    break;
-                default:
-                    print("unexpected layer clicked");
-                    return;
-            }
-        }
+    //        switch (cameraRaycaster.layerHit)
+    //        {
+    //            case Layer.Walkable:
+    //                currentDestination = ShortDestination(clickPoint, walkMoveStopRadius);  // So not set in default case
+    //                break;
+    //            case Layer.Enemy:
+    //                currentDestination = ShortDestination(clickPoint, attackMoveStopRadius);  // run not as far when attacking
+    //                break;
+    //            default:
+    //                print("unexpected layer clicked");
+    //                return;
+    //        }
+    //    }
 
-        WalkToDestination();
-    }
+    //    WalkToDestination();
+    //}
 
     private void WalkToDestination()
     {

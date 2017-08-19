@@ -107,7 +107,7 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 586f2fe6c56ca2249a82e8ef239d4e0a, type: 2}
 --- !u!4 &1134351 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4489140927154420, guid: cdb35b1e4e9fbdf46b434c997b7fb214,
@@ -3208,7 +3208,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1049663944
 Transform:
@@ -6422,7 +6422,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4873449933852756, guid: 6ceeedd754ead6b4d958d1dd67226992, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 11.4
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 4873449933852756, guid: 6ceeedd754ead6b4d958d1dd67226992, type: 2}
       propertyPath: m_LocalPosition.z

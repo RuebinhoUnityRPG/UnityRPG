@@ -11,31 +11,31 @@ public class CursorAffordance : MonoBehaviour {
 
     [SerializeField] Vector2 cursorHotspot = new Vector2(0,0);
 
+    [SerializeField] const int walkableLayerNumber = 8;
+    [SerializeField] const int enemyLayerNumber = 9;
+
     CameraRaycaster cameraRaycaster;
 
     // Use this for initialization
     void Start () {
 
         cameraRaycaster = GetComponent<CameraRaycaster>();
-        cameraRaycaster.onLayerChange += OnLayerChanged;
+        cameraRaycaster.notifyLayerChangeObservers += OnLayerChanged;
 
     }
 	
-	void OnLayerChanged (Layer givenLayer) { //Only called when layer changed
+	void OnLayerChanged (int givenLayer) { //Only called when layer changed
 
         switch (givenLayer)
         {
-            case Layer.Walkable:
+            case walkableLayerNumber:
                 Cursor.SetCursor(walkCursor, cursorHotspot, CursorMode.Auto);
                 break;
-            case Layer.Enemy:
+            case enemyLayerNumber:
                 Cursor.SetCursor(attackCursor, cursorHotspot, CursorMode.Auto);
                 break;
-            case Layer.RaycastEndStop:
-                Cursor.SetCursor(unknownCursor, cursorHotspot, CursorMode.Auto);
-                break;
             default:
-                print("Don't know what cursor to show");
+                Cursor.SetCursor(unknownCursor, cursorHotspot, CursorMode.Auto);
                 return;
         }
 	}
