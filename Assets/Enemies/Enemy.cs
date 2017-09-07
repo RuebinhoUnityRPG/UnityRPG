@@ -7,12 +7,16 @@ using UnityStandardAssets.Characters.ThirdPerson;
 public class Enemy : MonoBehaviour, IDamagable {
 
     [SerializeField] float maxHealthPoints = 100f;
+    [SerializeField] float chaseRadius = 8f;
+
     [SerializeField] float attackDamagePerShot = 9f;
     [SerializeField] float attackRadius = 4f;
-    [SerializeField] float chaseRadius = 8f;
+    [SerializeField] float secondsBetweenShots = 0.5f;
+
     [SerializeField] GameObject projectileToUse;
     [SerializeField] GameObject projectileSocket;
 
+    bool isAttacking = false;
     float currentHealthPoints = 100f;
     AICharacterControl aiCharacterControl = null;
     GameObject player = null;
@@ -39,9 +43,10 @@ public class Enemy : MonoBehaviour, IDamagable {
     private void Update()
     {
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-        if (distanceToPlayer <= attackRadius)
+        if (distanceToPlayer <= attackRadius && !isAttacking)
         {
-            SpawnProjectile();            
+            isAttacking = true;
+            InvokeRepeating("SpawnProjectile", 0f, secondsBetweenShots); //TODO Switch to coroutines            
         }
 
         if (distanceToPlayer <= chaseRadius)
