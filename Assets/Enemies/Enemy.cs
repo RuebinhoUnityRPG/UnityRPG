@@ -12,12 +12,13 @@ public class Enemy : MonoBehaviour, IDamagable {
     [SerializeField] float attackDamagePerShot = 9f;
     [SerializeField] float attackRadius = 4f;
     [SerializeField] float secondsBetweenShots = 0.5f;
+    [SerializeField] Vector3 AimOffset = new Vector3(0, 1f, 0);
 
     [SerializeField] GameObject projectileToUse;
     [SerializeField] GameObject projectileSocket;
-
+    
     bool isAttacking = false;
-    float currentHealthPoints = 100f;
+    float currentHealthPoints;
     AICharacterControl aiCharacterControl = null;
     GameObject player = null;
 
@@ -32,12 +33,17 @@ public class Enemy : MonoBehaviour, IDamagable {
     public void TakeDamage(float damage)
     {
         currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
+        if (currentHealthPoints <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         aiCharacterControl = GetComponent<AICharacterControl>();
+        currentHealthPoints = maxHealthPoints;
     }
 
     private void Update()
@@ -65,7 +71,7 @@ public class Enemy : MonoBehaviour, IDamagable {
         Projectile projectileComponent = newProjectile.GetComponent<Projectile>();
         projectileComponent.damageCaused = attackDamagePerShot;
 
-        Vector3 unitVectorToPlayer = (player.transform.position - projectileSocket.transform.position).normalized;
+        Vector3 unitVectorToPlayer = (player.transform.position + AimOffset - projectileSocket.transform.position).normalized;
         float projectileSpeed = projectileComponent.projectileSpeed;
         newProjectile.GetComponent<Rigidbody>().velocity = unitVectorToPlayer * projectileSpeed;
     }
