@@ -2589,11 +2589,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd80156ac499394f9913ca71f597389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 80
+  maxHealthPoints: 100
   chaseRadius: 2.5
-  attackDamagePerShot: 10
+  attackDamagePerShot: 50
   attackRadius: 10
-  secondsBetweenShots: 2
+  secondsBetweenShots: 1.5
   AimOffset: {x: 0, y: 1, z: 0}
   projectileToUse: {fileID: 1251136856252538, guid: fb651a3c3c562b148b25bd717051ca17,
     type: 2}
