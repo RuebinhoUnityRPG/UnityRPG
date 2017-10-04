@@ -17,9 +17,9 @@ public class Projectile : MonoBehaviour {
         startPosition = gameObject.transform.position;
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnCollisionEnter(Collision collision)
     {
-        Component damagableComponent = collider.gameObject.GetComponent(typeof(IDamagable));
+        Component damagableComponent = collision.gameObject.GetComponent(typeof(IDamagable));
         if(damagableComponent)
         {
             (damagableComponent as IDamagable).TakeDamage(damageCaused);
