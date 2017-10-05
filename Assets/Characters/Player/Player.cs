@@ -12,6 +12,9 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] float minTimeBetweenHits = 0.5f;
     [SerializeField] float maxAttackRange = 2f;
 
+    [SerializeField] Weapon weaponInUse;
+    [SerializeField] GameObject weaponSocket;
+
     GameObject currentTarget;
     CameraRaycaster cameraRayCaster;
 
@@ -19,7 +22,7 @@ public class Player : MonoBehaviour, IDamagable
 
     float currentHealthPoints;
 
-    public float healthAsPercentage
+    public float HealthAsPercentage
     {
         get
         {
@@ -29,9 +32,25 @@ public class Player : MonoBehaviour, IDamagable
 
     private void Start()
     {
+        RegisterForMouseClick();
+        currentHealthPoints = maxHealthPoints;
+
+        PutWeaponInHand();
+    }
+
+    private void RegisterForMouseClick()
+    {
         cameraRayCaster = FindObjectOfType<CameraRaycaster>();
         cameraRayCaster.notifyMouseClickObservers += OnMouseClick;
-        currentHealthPoints = maxHealthPoints;
+    }
+
+    private void PutWeaponInHand()
+    {
+        var weaponPrefab = weaponInUse.getWeaponPrefab();
+        var weapon = Instantiate(weaponPrefab, weaponSocket.transform);
+
+        weapon.transform.localPosition = weaponInUse.gripTransform.localPosition;
+        weapon.transform.localRotation= weaponInUse.gripTransform.localRotation;
     }
 
     void OnMouseClick(RaycastHit raycastHit, int layerHit)
