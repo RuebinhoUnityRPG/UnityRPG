@@ -2,58 +2,67 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG.Core;
 
-public class Projectile : MonoBehaviour {
-
-    [SerializeField] GameObject shooter;
-    [SerializeField] float projectileSpeed;
-    public float damageCaused;
-
-    private Vector3 startPosition;
-    private float xPosEnd = 20;
-    private float yPosEnd = 20;
-    private float zPosEnd = 20;
-
-    public void SetShooter(GameObject shooter)
+namespace RPG.Characters
+{
+    public class Projectile : MonoBehaviour
     {
-        this.shooter = shooter;
-    }
 
-    private void Start()
-    {
-        startPosition = gameObject.transform.position;
-    }
+        [SerializeField] GameObject shooter;
+        [SerializeField] float projectileSpeed;
+        public float damageCaused;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        var layerCollidedWith = collision.gameObject.layer;
-        if (layerCollidedWith != shooter.layer)
+        private Vector3 startPosition;
+        private float xPosEnd = 20;
+        private float yPosEnd = 20;
+        private float zPosEnd = 20;
+
+        public void SetShooter(GameObject shooter)
         {
-            DamageIfDamagable(collision);
+            this.shooter = shooter;
         }
-    }
 
-    private void DamageIfDamagable(Collision collision)
-    {
-        Component damagableComponent = collision.gameObject.GetComponent(typeof(IDamagable));
-        if (damagableComponent)
+        private void Start()
         {
-            (damagableComponent as IDamagable).TakeDamage(damageCaused);
-            Destroy(gameObject);
+            startPosition = gameObject.transform.position;
         }
-        
-    }
 
-    private void Update()
-    {
-        if ((transform.position.x > (startPosition.x + xPosEnd)) || (transform.position.y > (startPosition.y + yPosEnd)) || (transform.position.z > (startPosition.z + zPosEnd)))
+        private void OnCollisionEnter(Collision collision)
         {
-            Destroy(gameObject);
+            var layerCollidedWith = collision.gameObject.layer;
+            if (layerCollidedWith != shooter.layer)
+            {
+                DamageIfDamagable(collision);
+            }
         }
-    }
 
-    public float GetDefaultLaunchSpeed()
-    {
-        return projectileSpeed;
+        private void DamageIfDamagable(Collision collision)
+        {
+            Component damagableComponent = collision.gameObject.GetComponent(typeof(IDamagable));
+            if (damagableComponent)
+            {
+                (damagableComponent as IDamagable).TakeDamage(damageCaused);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+
+        }
+
+        private void Update()
+        {
+            if ((transform.position.x > (startPosition.x + xPosEnd)) || (transform.position.y > (startPosition.y + yPosEnd)) || (transform.position.z > (startPosition.z + zPosEnd)))
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        public float GetDefaultLaunchSpeed()
+        {
+            return projectileSpeed;
+        }
     }
 }
