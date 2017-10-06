@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Player : MonoBehaviour, IDamagable
 {
@@ -13,9 +14,7 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] float maxAttackRange = 2f;
 
     [SerializeField] Weapon weaponInUse;
-    [SerializeField] GameObject weaponSocket;
 
-    GameObject currentTarget;
     CameraRaycaster cameraRayCaster;
 
     private float lastHitTime = 0f;
@@ -47,10 +46,22 @@ public class Player : MonoBehaviour, IDamagable
     private void PutWeaponInHand()
     {
         var weaponPrefab = weaponInUse.getWeaponPrefab();
-        var weapon = Instantiate(weaponPrefab, weaponSocket.transform);
+        GameObject dominantHand = RequestDominantHand();
+        var weapon = Instantiate(weaponPrefab, dominantHand.transform);
 
         weapon.transform.localPosition = weaponInUse.gripTransform.localPosition;
         weapon.transform.localRotation= weaponInUse.gripTransform.localRotation;
+    }
+
+    private GameObject RequestDominantHand()
+    {
+        var dominantHands = GetComponentsInChildren<DominantHand>(); 
+        int numberOfDominantHands = dominantHands.Length;
+        // handle 0
+        Assert.IsFalse(numberOfDominantHands <= 0, "No dominant hand found, please add one!");
+        Assert.IsFalse(numberOfDominantHands < 1, "Multiple dominantHands found, please remove until one is left!");
+
+        return dominantHands[0].gameObject;
     }
 
     void OnMouseClick(RaycastHit raycastHit, int layerHit)
@@ -65,7 +76,6 @@ public class Player : MonoBehaviour, IDamagable
                 return;
             }
 
-            currentTarget = enemy;
             var enemyComponent = enemy.GetComponent<Enemy>();
             if (Time.time - lastHitTime > minTimeBetweenHits)
             {

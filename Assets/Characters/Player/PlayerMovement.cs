@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     ThirdPersonCharacter thirdPersonCharacter = null;   // A reference to the ThirdPersonCharacter on the object
     CameraRaycaster cameraRaycaster = null;
-    Vector3 currentDestination, clickPoint;
+    Vector3 clickPoint;
     AICharacterControl aiCharControl = null;
     GameObject walkTarget = null;
         
@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     {
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
         thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
-        currentDestination = transform.position;
         aiCharControl = GetComponent<AICharacterControl>();
         walkTarget = new GameObject("Walktarget");
 
@@ -57,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G)) //G for gamepad TODO allow remap later or change in menu
         {
             isInDirectMode = !isInDirectMode;
-            currentDestination = transform.position; // reset click position
             print("Controlmode Controller: " + isInDirectMode);
         }
     }
