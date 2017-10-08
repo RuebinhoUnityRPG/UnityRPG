@@ -20,8 +20,14 @@ namespace RPG.Weapons
 
         public AnimationClip getWeaponAttackAnimationClip()
         {
+            RemoveAnimationEvents();
             return attackAnimation;
         }
 
+        // erases all animation events that are in imported asset pack
+        private void RemoveAnimationEvents()
+        {
+            attackAnimation.events = new AnimationEvent[0]; 
+        }
     }
 }
