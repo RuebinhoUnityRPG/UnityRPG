@@ -31,7 +31,7 @@ namespace RPG.Characters
         private void OnCollisionEnter(Collision collision)
         {
             var layerCollidedWith = collision.gameObject.layer;
-            if (layerCollidedWith != shooter.layer)
+            if (shooter && layerCollidedWith != shooter.layer)
             {
                 DamageIfDamagable(collision);
             }

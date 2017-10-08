@@ -19,6 +19,7 @@ namespace RPG.Characters
         [SerializeField] float maxAttackRange = 2f;
 
         [SerializeField] Weapon weaponInUse;
+        [SerializeField] AnimatorOverrideController animOverrideController;
 
         CameraRaycaster cameraRayCaster;
 
@@ -37,9 +38,21 @@ namespace RPG.Characters
         private void Start()
         {
             RegisterForMouseClick();
-            currentHealthPoints = maxHealthPoints;
-
+            SetCurrentMaxHealth();
             PutWeaponInHand();
+            OverrideAnimatorController();
+        }
+
+        private void SetCurrentMaxHealth()
+        {
+            currentHealthPoints = maxHealthPoints;
+        }
+
+        private void OverrideAnimatorController()
+        {
+            var animator = GetComponent<Animator>();
+            animator.runtimeAnimatorController = animOverrideController;
+            animOverrideController["DEFAULT ATTACK"] = weaponInUse.getWeaponAttackAnimationClip(); //TODO remove const
         }
 
         private void RegisterForMouseClick()
