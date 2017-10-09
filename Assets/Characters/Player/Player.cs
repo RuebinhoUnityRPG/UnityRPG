@@ -15,17 +15,26 @@ namespace RPG.Characters
         [SerializeField] int enemyLayer = 9;
         [SerializeField] float maxHealthPoints = 200f;
         [SerializeField] float damagePerHit = 20f;
-        [SerializeField] float minTimeBetweenHits = 0.5f;
-        [SerializeField] float maxAttackRange = 2f;
 
         [SerializeField] Weapon weaponInUse;
         [SerializeField] AnimatorOverrideController animOverrideController;
 
         CameraRaycaster cameraRayCaster;
+        Animator animator;
 
         private float lastHitTime = 0f;
 
         float currentHealthPoints;
+
+        public void TakeDamage(float damage)
+        {
+            currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
+
+            //if (currentHealthPoints <= 0)
+            //{
+            //    Destroy(gameObject);
+            //}
+        }
 
         public float HealthAsPercentage
         {
@@ -40,7 +49,7 @@ namespace RPG.Characters
             RegisterForMouseClick();
             SetCurrentMaxHealth();
             PutWeaponInHand();
-            OverrideAnimatorController();
+            SetupRuntimeAnimator();
         }
 
         private void SetCurrentMaxHealth()
@@ -48,11 +57,11 @@ namespace RPG.Characters
             currentHealthPoints = maxHealthPoints;
         }
 
-        private void OverrideAnimatorController()
+        private void SetupRuntimeAnimator()
         {
-            var animator = GetComponent<Animator>();
+            animator = GetComponent<Animator>();
             animator.runtimeAnimatorController = animOverrideController;
-            animOverrideController["DEFAULT ATTACK"] = weaponInUse.getWeaponAttackAnimationClip(); //TODO remove const
+            animOverrideController["DEFAULT ATTACK"] = weaponInUse.GetWeaponAttackAnimationClip(); //TODO remove const
         }
 
         private void RegisterForMouseClick()
@@ -63,7 +72,7 @@ namespace RPG.Characters
 
         private void PutWeaponInHand()
         {
-            var weaponPrefab = weaponInUse.getWeaponPrefab();
+            var weaponPrefab = weaponInUse.GetWeaponPrefab();
             GameObject dominantHand = RequestDominantHand();
             var weapon = Instantiate(weaponPrefab, dominantHand.transform);
 
@@ -88,29 +97,28 @@ namespace RPG.Characters
             {
                 var enemy = raycastHit.collider.gameObject;
 
-                // Check enemy is in range
-                if ((enemy.transform.position - transform.position).magnitude > maxAttackRange)
+                if(IsTargetInRange(enemy))
                 {
-                    return;
-                }
-
-                var enemyComponent = enemy.GetComponent<Enemy>();
-                if (Time.time - lastHitTime > minTimeBetweenHits)
-                {
-                    enemyComponent.TakeDamage(damagePerHit);
-                    lastHitTime = Time.time;
+                    AttackTarget(enemy);
                 }
             }
         }
 
-        public void TakeDamage(float damage)
+        private void AttackTarget(GameObject target)
         {
-            currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
+            var enemyComponent = target.GetComponent<Enemy>();
+            if (Time.time - lastHitTime > weaponInUse.GetMinTimeBetweenHits())
+            {
+                animator.SetTrigger("Attack"); //TODO make const
+                enemyComponent.TakeDamage(damagePerHit);
+                lastHitTime = Time.time;
+            }
+        }
 
-            //if (currentHealthPoints <= 0)
-            //{
-            //    Destroy(gameObject);
-            //}
+        private bool IsTargetInRange(GameObject target)
+        {
+            float distanceToTarget = (target.transform.position - transform.position).magnitude;
+            return distanceToTarget <= weaponInUse.GetMaxAttackRange();
         }
     }
 }

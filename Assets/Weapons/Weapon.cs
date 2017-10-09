@@ -12,16 +12,29 @@ namespace RPG.Weapons
 
         [SerializeField] GameObject weaponPrefab;
         [SerializeField] AnimationClip attackAnimation;
+        [SerializeField] float minTimeBetweenHits = 0.5f;
+        [SerializeField] float maxAttackRange = 2f;
 
-        public GameObject getWeaponPrefab()
+        public GameObject GetWeaponPrefab()
         {
             return weaponPrefab;
         }
 
-        public AnimationClip getWeaponAttackAnimationClip()
+        public AnimationClip GetWeaponAttackAnimationClip()
         {
             RemoveAnimationEvents();
             return attackAnimation;
+        }
+
+        public float GetMinTimeBetweenHits()
+        {
+            //TODO consider whether we take animation time into account?
+            return minTimeBetweenHits;
+        }
+
+        public float GetMaxAttackRange()
+        {
+            return maxAttackRange;
         }
 
         // erases all animation events that are in imported asset pack
