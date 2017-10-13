@@ -26,6 +26,7 @@ public class AudioTrigger : MonoBehaviour
         if (other.gameObject.layer == layerFilter)
         {
             RequestPlayAudioClip();
+            print(other);
         }
     }
 
