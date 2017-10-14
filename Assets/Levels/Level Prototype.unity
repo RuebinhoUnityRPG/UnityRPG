@@ -1467,6 +1467,12 @@ Transform:
   m_Father: {fileID: 1185818965}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &180929965 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114135605279621940, guid: 75a43cca039264395b99698681e52275,
+    type: 2}
+  m_PrefabInternal: {fileID: 383083565}
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!4 &187529985 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4489140927154420, guid: cdb35b1e4e9fbdf46b434c997b7fb214,
@@ -2820,10 +2826,6 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1653876244793134, guid: 75a43cca039264395b99698681e52275, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75a43cca039264395b99698681e52275, type: 2}
@@ -14901,6 +14903,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee496661409fe0446aad50e7ec8d77b5, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2019247602 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1707902364782986, guid: ee496661409fe0446aad50e7ec8d77b5,
+    type: 2}
+  m_PrefabInternal: {fileID: 2019247601}
+--- !u!114 &2019247603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2019247602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f734854f64dc6724b99e82511c3e4533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyBarImage: {fileID: 180929965}
+  maxEnergyPoints: 100
 --- !u!4 &2023709910 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4963014618804616, guid: dc96ebaa8a4888c4890afa3f0a14ffa2,

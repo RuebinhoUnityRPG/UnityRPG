@@ -16,8 +16,8 @@ namespace RPG.Characters
         [SerializeField] float maxHealthPoints = 200f;
         [SerializeField] float damagePerHit = 20f;
 
-        [SerializeField] Weapon weaponInUse;
-        [SerializeField] AnimatorOverrideController animOverrideController;
+        [SerializeField] Weapon weaponInUse = null;
+        [SerializeField] AnimatorOverrideController animOverrideController = null;
 
         CameraRaycaster cameraRayCaster;
         Animator animator;
