@@ -77,15 +77,17 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -107,6 +109,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    debug:
+      m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 586f2fe6c56ca2249a82e8ef239d4e0a, type: 2}
 --- !u!4 &1134351 stripped
 Transform:
@@ -1434,6 +1438,10 @@ Prefab:
       propertyPath: clip
       value: 
       objectReference: {fileID: 8300000, guid: f3e035c2e53a1974c827cd396b87e0bf, type: 3}
+    - target: {fileID: 1650730097896706, guid: 8d8049737f9e2d44ebf043bc635c6bc3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d8049737f9e2d44ebf043bc635c6bc3, type: 2}
   m_IsPrefabParent: 0
@@ -2740,12 +2748,12 @@ Prefab:
     - target: {fileID: 224105136012598370, guid: 75a43cca039264395b99698681e52275,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 539
       objectReference: {fileID: 0}
     - target: {fileID: 224105136012598370, guid: 75a43cca039264395b99698681e52275,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 245
       objectReference: {fileID: 0}
     - target: {fileID: 224105136012598370, guid: 75a43cca039264395b99698681e52275,
         type: 2}
@@ -2826,6 +2834,10 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653876244793134, guid: 75a43cca039264395b99698681e52275, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75a43cca039264395b99698681e52275, type: 2}
@@ -5226,7 +5238,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114631599344270452, guid: fab0b010bae7be04e811afa1bd1ee56e,
+        type: 2}
+      propertyPath: walkCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: 4a19ac72c491aaf4493bad1d24578bbc, type: 3}
+    - target: {fileID: 114631599344270452, guid: fab0b010bae7be04e811afa1bd1ee56e,
+        type: 2}
+      propertyPath: enemyCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: 65584703134766a468a39802e52426df, type: 3}
+    m_RemovedComponents:
+    - {fileID: 114801875446179588, guid: fab0b010bae7be04e811afa1bd1ee56e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fab0b010bae7be04e811afa1bd1ee56e, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &807448334
@@ -8183,6 +8206,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114772174748016802, guid: d8affbe4baba29e4880bdb9015b8abf7,
+        type: 2}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7452d5672bc8274499bc3954c9e5d83b, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8affbe4baba29e4880bdb9015b8abf7, type: 2}
   m_IsPrefabParent: 0
@@ -12757,6 +12785,10 @@ Prefab:
       propertyPath: clip
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1650730097896706, guid: 8d8049737f9e2d44ebf043bc635c6bc3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d8049737f9e2d44ebf043bc635c6bc3, type: 2}
   m_IsPrefabParent: 0
@@ -14921,6 +14953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyBarImage: {fileID: 180929965}
   maxEnergyPoints: 100
+  pointsPerHit: 10
 --- !u!4 &2023709910 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4963014618804616, guid: dc96ebaa8a4888c4890afa3f0a14ffa2,

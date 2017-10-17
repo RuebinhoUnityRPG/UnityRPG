@@ -20,9 +20,6 @@ namespace RPG.Characters
 
         bool isInDirectMode = false;
 
-        [SerializeField] const int walkableLayerNumber = 8;
-        [SerializeField] const int enemyLayerNumber = 9;
-
         private void Start()
         {
             cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
@@ -30,27 +27,24 @@ namespace RPG.Characters
             aiCharControl = GetComponent<AICharacterControl>();
             walkTarget = new GameObject("Walktarget");
 
-            cameraRaycaster.notifyMouseClickObservers += ProcessMouseClick;
+            cameraRaycaster.OnMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
+            cameraRaycaster.OnMouseOverEnemyHit += OnMouseOverEnemyHit;
         }
 
-        void ProcessMouseClick(RaycastHit raycastHit, int layerHit)
+        private void OnMouseOverEnemyHit(Enemy enemy)
         {
-            switch (layerHit)
+            if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(1))
             {
-                case enemyLayerNumber:
-                    //navigate to enemy
-                    GameObject enemy = raycastHit.collider.gameObject;
-                    aiCharControl.SetTarget(enemy.transform);
-                    break;
-                case walkableLayerNumber:
-                    //navigate to the ground
-                    walkTarget.transform.position = raycastHit.point;
-                    aiCharControl.SetTarget(walkTarget.transform);
-                    break;
-                default:
-                    Debug.Log("Dont know how to handle mouseclick or player movement");
-                    return;
+                aiCharControl.SetTarget(enemy.transform);
+            }
+        }
 
+        private void OnMouseOverPotentiallyWalkable(Vector3 destination)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                walkTarget.transform.position = destination;
+                aiCharControl.SetTarget(walkTarget.transform);
             }
         }
 
