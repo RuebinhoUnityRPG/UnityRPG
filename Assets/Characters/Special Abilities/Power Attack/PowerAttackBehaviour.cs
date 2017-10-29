@@ -14,9 +14,16 @@ namespace RPG.Characters
             this.config = configToSet;
         }
 
-        public void Use()
+        public void Use(AbilityUseParams abilityUseParams)
         {
-            throw new NotImplementedException();
+            print("Power attack used by: " + gameObject.name);
+            float damageToDeal = abilityUseParams.baseDamage + config.GetExtraDamage();
+            abilityUseParams.target.TakeDamage(damageToDeal);
+        }
+
+        private void Start()
+        {
+            print("Power Attack Behaviour attached to: " + gameObject);
         }
     }
 }

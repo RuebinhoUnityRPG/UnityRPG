@@ -12,10 +12,13 @@ namespace RPG.Characters
     public class Player : MonoBehaviour, IDamagable
     {
         [SerializeField] float maxHealthPoints = 200f;
-        [SerializeField] float damagePerHit = 20f;
+        [SerializeField] float baseDamage = 20f;
 
         [SerializeField] Weapon weaponInUse = null;
         [SerializeField] AnimatorOverrideController animOverrideController = null;
+
+        //Temp for debugging
+        [SerializeField] SpecialAbility[] abilities;
 
         CameraRaycaster cameraRayCaster;
         Animator animator;
@@ -48,6 +51,7 @@ namespace RPG.Characters
             SetCurrentMaxHealth();
             PutWeaponInHand();
             SetupRuntimeAnimator();
+            abilities[0].AttachComponentTo(gameObject);
         }
 
         private void SetCurrentMaxHealth()
@@ -73,6 +77,24 @@ namespace RPG.Characters
             if (Input.GetMouseButton(0) && IsTargetInRange(enemy.gameObject))
             {
                 AttackTarget(enemy);
+            }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                AttemptSpecialAbility(0, enemy);
+            }
+        }
+
+        private void AttemptSpecialAbility(int abilityIndex, Enemy enemy)
+        {
+            var energyComponent = GetComponent<Energy>();
+            var energyCost = abilities[abilityIndex].GetEnergyCost();
+
+            if (energyComponent.IsEnergyAvailable(energyCost)) //TODO read from SO
+            {
+                energyComponent.ConsumeEnergy(energyCost);
+                //Use the ability
+                var abilityParams = new AbilityUseParams(enemy, baseDamage);
+                abilities[abilityIndex].Use(abilityParams);
             }
         }
 
@@ -102,7 +124,7 @@ namespace RPG.Characters
             if (Time.time - lastHitTime > weaponInUse.GetMinTimeBetweenHits())
             {
                 animator.SetTrigger("Attack"); //TODO make const
-                enemy.TakeDamage(damagePerHit);
+                enemy.TakeDamage(baseDamage);
                 lastHitTime = Time.time;
             }
         }
