@@ -2749,6 +2749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyBarImage: {fileID: 0}
   maxEnergyPoints: 100
+  regenPointsPerSecond: 1
 --- !u!114 &114688623295465958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2761,11 +2762,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoints: 1000
-  damagePerHit: 100
+  baseDamage: 20
   weaponInUse: {fileID: 11400000, guid: 1401c9de9849fb04781de7db2b961c1a, type: 2}
   animOverrideController: {fileID: 22100000, guid: d73d0a34caa7cce428c8244fbed58be0,
     type: 2}
   abilities:
+  - {fileID: 11400000, guid: 5a812bd4c54fe1e48918ab10ae31e6fe, type: 2}
   - {fileID: 11400000, guid: 1ff29984c586e084ea3678d31e3ef16c, type: 2}
 --- !u!114 &114823611394215448
 MonoBehaviour:
@@ -2818,7 +2820,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
+  m_Radius: 0.2
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: 0.8, z: 0}
@@ -2988,7 +2990,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1707902364782986}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
