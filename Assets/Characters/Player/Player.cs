@@ -18,6 +18,11 @@ namespace RPG.Characters
         [SerializeField] Weapon weaponInUse = null;
         [SerializeField] AnimatorOverrideController animOverrideController = null;
 
+        AudioSource audioSource;
+        //Arrays for sounds
+        [SerializeField] AudioClip[] damageSounds;
+        [SerializeField] AudioClip[] deathSounds;
+
         //Temp for debugging
         [SerializeField] SpecialAbility[] abilities;
 
@@ -45,10 +50,15 @@ namespace RPG.Characters
         {
             //Play Death Sound (optional)
             Debug.Log("Death Sound");
+            AudioClip deathSound = deathSounds[(int)UnityEngine.Random.Range(0f, deathSounds.Length)];
+
+            audioSource.clip = deathSound;
+            audioSource.Play();
+
             //Trigger Death Animation (optional)
             Debug.Log("Death Animation");
             //Reload the scene after some seconds or player key press input
-            yield return new WaitForSecondsRealtime(2f); // TODO use audio clip length
+            yield return new WaitForSecondsRealtime(audioSource.clip.length);
             SceneManager.LoadScene(0);
         }
 
@@ -56,6 +66,10 @@ namespace RPG.Characters
         {
             currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
             // play sound
+            AudioClip damageSound = damageSounds[(int)UnityEngine.Random.Range(0f, damageSounds.Length)];
+
+            audioSource.clip = damageSound;
+            audioSource.Play();
         }
 
         public float HealthAsPercentage
@@ -73,6 +87,7 @@ namespace RPG.Characters
             PutWeaponInHand();
             SetupRuntimeAnimator();
             abilities[0].AttachComponentTo(gameObject);
+            audioSource = GetComponent<AudioSource>();
         }
 
         private void SetCurrentMaxHealth()
