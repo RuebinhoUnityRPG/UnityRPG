@@ -59,7 +59,7 @@ namespace RPG.Characters
             
             //Play Death Sound (optional)
             Debug.Log("Death Sound");
-            AudioClip deathSound = deathSounds[(int)UnityEngine.Random.Range(0f, deathSounds.Length)]
+            AudioClip deathSound = deathSounds[(int)UnityEngine.Random.Range(0f, deathSounds.Length)];
             audioSource.clip = deathSound;
             audioSource.Play();
 

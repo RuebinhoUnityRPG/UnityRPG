@@ -655,8 +655,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1872735844661664}
-  m_LocalRotation: {x: 0, y: -0.19440559, z: 0, w: 0.98092127}
-  m_LocalPosition: {x: 1.385612, y: 11.674187, z: -113.534966}
+  m_LocalRotation: {x: -0, y: -0.96692336, z: -0, w: -0.25506708}
+  m_LocalPosition: {x: 44.405373, y: 3.6410446, z: 10.287895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4437071870883572}
@@ -823,7 +823,8 @@ MonoBehaviour:
   chaseRadius: 5
   attackDamagePerShot: 60
   attackRadius: 2
-  secondsBetweenShots: 2
+  firingPeriodInSeconds: 3
+  firingPeriodVariation: 0
   AimOffset: {x: 0, y: 1, z: 0}
   projectileToUse: {fileID: 1251136856252538, guid: f3ca5ccd138fb054c952d040a7dbca50,
     type: 2}

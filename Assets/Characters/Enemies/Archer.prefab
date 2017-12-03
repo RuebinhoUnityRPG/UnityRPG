@@ -482,7 +482,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4844423101773832}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4270452742919370
 Transform:
@@ -604,7 +604,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4844423101773832}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4718280197308734
 Transform:
@@ -617,7 +617,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4844423101773832}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4720297440165244
 Transform:
@@ -724,13 +724,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358897047673644}
   m_LocalRotation: {x: -0, y: -0.96692336, z: -0, w: -0.25506708}
-  m_LocalPosition: {x: 18.29, y: 3.6719894, z: -3.8}
+  m_LocalPosition: {x: 16.87, y: 3.6719894, z: 6.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4258841342618736}
-  - {fileID: 4717074062519916}
   - {fileID: 4718280197308734}
   - {fileID: 4949657658382416}
+  - {fileID: 4258841342618736}
+  - {fileID: 4717074062519916}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -215.06, z: 0}
@@ -775,7 +775,7 @@ Transform:
   - {fileID: 4108914148988598}
   - {fileID: 4720297440165244}
   m_Father: {fileID: 4844423101773832}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -95.15, z: 0}
 --- !u!23 &23985252448063140
 MeshRenderer:
@@ -930,7 +930,8 @@ MonoBehaviour:
   chaseRadius: 2.5
   attackDamagePerShot: 50
   attackRadius: 10
-  secondsBetweenShots: 1.5
+  firingPeriodInSeconds: 2
+  firingPeriodVariation: 0
   AimOffset: {x: 0, y: 1, z: 0}
   projectileToUse: {fileID: 1251136856252538, guid: fb651a3c3c562b148b25bd717051ca17,
     type: 2}
