@@ -9,13 +9,33 @@ namespace RPG.Characters
     public class AOEAttackBehaviour : MonoBehaviour, ISpecialAbility {
 
         AOEAttackConfig config;
-
+        
         public void SetConfig(AOEAttackConfig configToSet)
         {
             this.config = configToSet;
         }
 
         public void Use(AbilityUseParams abilityUseParams)
+        {
+            DealRadialDamage(abilityUseParams);
+            PlayParticleEffect();
+        }
+
+        private void PlayParticleEffect()
+        {
+            Debug.Log("AOE Attack Particle System triggered");
+            //Instanciate ParticleSystem prefab attached to the player
+            var prefab = Instantiate(config.GetParticleSystemPrefab(), transform.position, Quaternion.identity);
+            //TODO decide if pareticle systems attached to player
+            //Get the particle system component
+            ParticleSystem particleSystemEffect = prefab.GetComponent<ParticleSystem>();
+            //Play particle System
+            particleSystemEffect.Play();
+            //Destroy after duration
+            Destroy(prefab, particleSystemEffect.main.duration);
+        }
+
+        private void DealRadialDamage(AbilityUseParams abilityUseParams)
         {
             print("AOE attack used by: " + gameObject.name);
             //static SphereCast to radius for targets
@@ -25,7 +45,7 @@ namespace RPG.Characters
             foreach (RaycastHit hit in hits)
             {
                 var damagable = hit.collider.gameObject.GetComponent<IDamagable>();
-                if(damagable != null)
+                if (damagable != null)
                 {
                     float damageToDeal = abilityUseParams.baseDamage + config.GetDamageToEachTarget();
                     damagable.TakeDamage(damageToDeal);
