@@ -62,6 +62,7 @@ namespace RPG.Characters
             AudioClip deathSound = deathSounds[(int)UnityEngine.Random.Range(0f, deathSounds.Length)];
             audioSource.clip = deathSound;
             audioSource.Play();
+            Debug.Log(audioSource.clip);
 
             //Reload the scene after some seconds or player key press input
             yield return new WaitForSecondsRealtime(audioSource.clip.length);
@@ -75,6 +76,7 @@ namespace RPG.Characters
             AudioClip damageSound = damageSounds[(int)UnityEngine.Random.Range(0f, damageSounds.Length)];
             audioSource.clip = damageSound;
             audioSource.Play();
+            Debug.Log(audioSource.clip);
         }
 
         public float HealthAsPercentage
