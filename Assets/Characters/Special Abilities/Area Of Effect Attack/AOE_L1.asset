@@ -9,10 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfe7866105b3a07489a7d38afed5d139, type: 3}
-  m_Name: AOE Attack L1
+  m_Name: AOE_L1
   m_EditorClassIdentifier: 
   energyCost: 50
   particleSystemPrefab: {fileID: 1638862749607280, guid: 9c48326f1e90d9949b788967d896a2b9,
     type: 2}
+  AudioClipToPlay: {fileID: 8300000, guid: 1d3618ee8991be34b821943a2412ab65, type: 3}
   radius: 5
   damageToEachTarget: 15

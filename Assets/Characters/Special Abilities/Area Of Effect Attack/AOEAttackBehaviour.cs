@@ -45,7 +45,8 @@ namespace RPG.Characters
             foreach (RaycastHit hit in hits)
             {
                 var damagable = hit.collider.gameObject.GetComponent<IDamagable>();
-                if (damagable != null)
+                bool hitPlayer = hit.collider.gameObject.GetComponent<Player>();
+                if (damagable != null && !hitPlayer)
                 {
                     float damageToDeal = abilityUseParams.baseDamage + config.GetDamageToEachTarget();
                     damagable.TakeDamage(damageToDeal);

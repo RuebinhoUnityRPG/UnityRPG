@@ -6,7 +6,7 @@ using UnityEngine;
 namespace RPG.Characters
 {
     [CreateAssetMenu(menuName = ("RPG/Special Ability/AOE Attack"))]
-    public class AOEAttackConfig : SpecialAbility
+    public class AOEAttackConfig : AbilityConfig
     {
 
         [Header("AOE Attack Specific")]

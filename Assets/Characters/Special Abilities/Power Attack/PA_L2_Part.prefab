@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198656519900622068}
   - component: {fileID: 199526124276680714}
   m_Layer: 11
-  m_Name: Power Attack L2 Particles
+  m_Name: PA_L2_Part
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
