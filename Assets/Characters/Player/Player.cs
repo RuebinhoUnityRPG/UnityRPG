@@ -14,6 +14,10 @@ namespace RPG.Characters
     {
         [SerializeField] float maxHealthPoints = 200f;
         [SerializeField] float baseDamage = 20f;
+        [Range (0f, 100f)] [SerializeField] float critChanceInPerCent = 20f;
+        [SerializeField] float critHitMultiplierInPerCent = 125f;
+        [SerializeField] ParticleSystem critParticleSystem = null;
+        [SerializeField] AudioClip critAudioClip = null;
 
         [SerializeField] Weapon weaponInUse = null;
         [SerializeField] AnimatorOverrideController animOverrideController = null;
@@ -48,7 +52,7 @@ namespace RPG.Characters
             AudioClip damageSound = damageSounds[(int)UnityEngine.Random.Range(0f, damageSounds.Length)];
             audioSource.clip = damageSound;
             audioSource.Play();
-            Debug.Log(audioSource.clip);
+            //Debug.Log(audioSource.clip);
 
             if (playerDies)
             {
@@ -198,9 +202,32 @@ namespace RPG.Characters
             if (Time.time - lastHitTime > weaponInUse.GetMinTimeBetweenHits())
             {
                 animator.SetTrigger(ATTACK_TRIGGER);
-                enemy.TakeDamage(baseDamage);
+                enemy.TakeDamage(CalculateDamage());
                 lastHitTime = Time.time;
             }
+        }
+
+        private float CalculateDamage()
+        {
+            //allow for crit
+            bool critChanceSuccessful = UnityEngine.Random.Range(0f, 100f) <= critChanceInPerCent;
+
+            float finalDamage = baseDamage + weaponInUse.GetAdditionalDamage();
+
+            if (critChanceSuccessful)
+            {
+                finalDamage = finalDamage * critHitMultiplierInPerCent / 100;
+                Debug.Log("Crit Damage dealt: " + finalDamage);
+                audioSource.clip = critAudioClip;
+                audioSource.Play();
+                critParticleSystem.Play();
+                return finalDamage;
+            } else
+            {
+                Debug.Log("Normal Damage dealt: " + finalDamage);
+                return finalDamage;
+            }
+
         }
 
         private bool IsTargetInRange(GameObject target)
