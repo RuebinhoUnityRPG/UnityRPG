@@ -25,7 +25,8 @@ namespace RPG.Characters
         {
             Debug.Log("AOE Attack Particle System triggered");
             //Instanciate ParticleSystem prefab attached to the player
-            var prefab = Instantiate(config.GetParticleSystemPrefab(), transform.position, Quaternion.identity);
+            var particlePrefab = config.GetParticleSystemPrefab();
+            var prefab = Instantiate(particlePrefab, transform.position, particlePrefab.transform.rotation);
             //TODO decide if pareticle systems attached to player
             //Get the particle system component
             ParticleSystem particleSystemEffect = prefab.GetComponent<ParticleSystem>();
