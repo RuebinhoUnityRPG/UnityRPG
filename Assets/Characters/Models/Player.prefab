@@ -2892,7 +2892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyOrbImage: {fileID: 0}
   maxEnergyPoints: 100
-  regenPointsPerSecond: 1
+  regenPointsPerSecond: 2
 --- !u!114 &114688623295465958
 MonoBehaviour:
   m_ObjectHideFlags: 1
