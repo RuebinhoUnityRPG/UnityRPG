@@ -12,7 +12,6 @@ namespace RPG.Characters
         public override void Use(AbilityUseParams abilityUseParams)
         {
             player.HealPlayer((config as SelfHealConfig).GetHealingPointsPerUse());
-            print("Self Heal Used by player: " + gameObject);
 
             audioSource.clip = config.GetAudioClipToPlay();
             audioSource.Play();
@@ -22,7 +21,6 @@ namespace RPG.Characters
 
         private void Start()
         {
-            print("Self Heal Behaviour attached to: " + gameObject);
             player = GetComponent<Player>();
             audioSource = GetComponent<AudioSource>();
         }
