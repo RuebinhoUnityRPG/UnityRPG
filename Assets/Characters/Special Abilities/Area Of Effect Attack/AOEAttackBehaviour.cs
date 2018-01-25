@@ -10,6 +10,7 @@ namespace RPG.Characters
 
         public override void Use(AbilityUseParams abilityUseParams)
         {
+            PlayAbilitySound();
             DealRadialDamage(abilityUseParams);
             PlayParticleEffect();
         }

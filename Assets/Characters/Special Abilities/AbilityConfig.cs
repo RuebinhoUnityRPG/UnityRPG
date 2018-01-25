@@ -22,7 +22,7 @@ namespace RPG.Characters
         [Header("Special Ability General")]
         [SerializeField] float energyCost = 10f;
         [SerializeField] GameObject particleSystemPrefab = null;
-        [SerializeField] AudioClip AudioClipToPlay = null;
+        [SerializeField] AudioClip[] AudioClipsToPlay = null;
 
         protected AbilityBehaviour behaviour;
 
@@ -43,9 +43,9 @@ namespace RPG.Characters
             return particleSystemPrefab;
         }
 
-        public AudioClip GetAudioClipToPlay()
+        public AudioClip GetRandomAudioClipToPlay()
         {
-            return AudioClipToPlay;
+            return AudioClipsToPlay[Random.Range(0, AudioClipsToPlay.Length)];
         }
     }
 
