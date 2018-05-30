@@ -52,10 +52,10 @@ namespace RPG.Characters
         {
             if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
             {
-                character.Move(navMeshAgent.desiredVelocity, false, false);
+                character.Move(navMeshAgent.desiredVelocity);
             } else
             {
-                character.Move(Vector3.zero, false, false);
+                character.Move(Vector3.zero);
             }
 
 
