@@ -10,6 +10,7 @@ namespace RPG.Characters
     {
         [SerializeField] float MovingTurnSpeed = 360;
         [SerializeField] float StationaryTurnSpeed = 180;
+        [SerializeField] float moveThreshold = 1f; 
 
         Rigidbody myRigidbody;
         Animator animator;
@@ -27,24 +28,28 @@ namespace RPG.Characters
         }
 
 
-        public void Move(Vector3 move)
+        public void Move(Vector3 movement)
         {
-
-            // convert the world relative moveInput vector into a local-relative
-            // turn amount and forward amount required to head in the desired
-            // direction.
-            if (move.magnitude > 1f) move.Normalize();
-            move = transform.InverseTransformDirection(move);
-            turnAmount = Mathf.Atan2(move.x, move.z);
-            forwardAmount = move.z;
-
+            SetForwardAndTurn(movement);
             ApplyExtraTurnRotation();
-
             // send input and other state parameters to the animator
-            UpdateAnimator(move);
+            UpdateAnimator();
         }
 
-        void UpdateAnimator(Vector3 move)
+        private void SetForwardAndTurn(Vector3 movement)
+        {
+            // convert the world relative moveInput vector into a local-relative
+            // turn amount and forward amount required to head in the desired direction.
+            if (movement.magnitude > moveThreshold)
+            {
+                movement.Normalize();
+            }
+            var localMovement = transform.InverseTransformDirection(movement);
+            turnAmount = Mathf.Atan2(localMovement.x, localMovement.z);
+            forwardAmount = localMovement.z;
+        }
+
+        void UpdateAnimator()
         {
             // update the animator parameters
             animator.SetFloat("Forward", forwardAmount, 0.1f, Time.deltaTime);

@@ -6,12 +6,12 @@ using RPG.CameraUI; //TODO consider re-wiring
 namespace RPG.Characters
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    [RequireComponent(typeof(ThirdPersonCharacter))]
     public class CharacterMovement : MonoBehaviour
     {
         [SerializeField] float stoppingDistance = 1f;
-        [SerializeField] float moveSpeedMultiplier = 0.7f; 
-        ThirdPersonCharacter character;   // A reference to the ThirdPersonCharacter on the object
+        [SerializeField] float moveSpeedMultiplier = 0.7f;
+        [SerializeField] float animationSpeedMultiplier = 0.7f;
+
         Vector3 clickPoint;
         GameObject walkTarget;
         NavMeshAgent navMeshAgent;
@@ -21,10 +21,17 @@ namespace RPG.Characters
 
         bool isInDirectMode = false;
 
+        [SerializeField] float movingTurnSpeed = 360;
+        [SerializeField] float stationaryTurnSpeed = 180;
+        [SerializeField] float moveThreshold = 1f;
+
+        float turnAmount;
+        float forwardAmount;
+        float m_MoveSpeedMultiplier = 1;
+
         private void Start()
         {
             CameraRaycaster cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
-            character = GetComponent<ThirdPersonCharacter>();
             walkTarget = new GameObject("Walktarget");
 
             navMeshAgent = GetComponent<NavMeshAgent>();
@@ -36,7 +43,10 @@ namespace RPG.Characters
             cameraRaycaster.OnMouseOverEnemyHit += OnMouseOverEnemyHit;
 
             animator = GetComponent<Animator>();
+            animator.applyRootMotion = true;
+
             myRigidbody = GetComponent<Rigidbody>();
+            myRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         }
 
         private void OnMouseOverEnemyHit(Enemy enemy)
@@ -59,10 +69,10 @@ namespace RPG.Characters
         {
             if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
             {
-                character.Move(navMeshAgent.desiredVelocity);
+                Move(navMeshAgent.desiredVelocity);
             } else
             {
-                character.Move(Vector3.zero);
+                Move(Vector3.zero);
             }
 
 
@@ -116,6 +126,42 @@ namespace RPG.Characters
 
         //    character.Move(movement, false, false);
         //}
+
+        public void Move(Vector3 movement)
+        {
+            SetForwardAndTurn(movement);
+            ApplyExtraTurnRotation();
+            // send input and other state parameters to the animator
+            UpdateAnimator();
+        }
+
+        void SetForwardAndTurn(Vector3 movement)
+        {
+            // convert the world relative moveInput vector into a local-relative
+            // turn amount and forward amount required to head in the desired direction.
+            if (movement.magnitude > moveThreshold)
+            {
+                movement.Normalize();
+            }
+            var localMovement = transform.InverseTransformDirection(movement);
+            turnAmount = Mathf.Atan2(localMovement.x, localMovement.z);
+            forwardAmount = localMovement.z;
+        }
+
+        void UpdateAnimator()
+        {
+            // update the animator parameters
+            animator.SetFloat("Forward", forwardAmount, 0.1f, Time.deltaTime);
+            animator.SetFloat("Turn", turnAmount, 0.1f, Time.deltaTime);
+            animator.speed = animationSpeedMultiplier;
+        }
+
+        void ApplyExtraTurnRotation()
+        {
+            // help the character turn faster (this is in addition to root rotation in the animation)
+            float turnSpeed = Mathf.Lerp(stationaryTurnSpeed, movingTurnSpeed, forwardAmount);
+            transform.Rotate(0, turnAmount * turnSpeed * Time.deltaTime, 0);
+        }
     }
 }
 
