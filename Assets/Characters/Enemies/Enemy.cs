@@ -6,10 +6,10 @@ using RPG.Core;
 
 namespace RPG.Characters
 {
-    public class Enemy : MonoBehaviour, IDamagable
+    public class Enemy : MonoBehaviour, IDamagable //todo remove IDmaagable
     {
 
-        [SerializeField] float maxHealthPoints = 100f;
+
         [SerializeField] float chaseRadius = 8f;
 
         [SerializeField] float attackDamagePerShot = 9f;
@@ -25,38 +25,14 @@ namespace RPG.Characters
         float currentHealthPoints;
         Player player = null;
 
-        public float healthAsPercentage
-        {
-            get
-            {
-                return currentHealthPoints / maxHealthPoints;
-            }
-        }
-
-        public void TakeDamage(float damage)
-        {
-            currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
-            if (currentHealthPoints <= 0)
-            {
-                Destroy(gameObject);
-            }
-        }
-
         private void Start()
         {
             player = FindObjectOfType<Player>();
             //aiCharacterControl = GetComponent<AICharacterControl>();
-            currentHealthPoints = maxHealthPoints;
         }
 
         private void Update()
         {
-            if (player.HealthAsPercentage <= Mathf.Epsilon)
-            {
-                StopAllCoroutines();
-                Destroy(this);
-            }
-
             float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
             if (distanceToPlayer <= attackRadius && !isAttacking)
             {
@@ -105,5 +81,11 @@ namespace RPG.Characters
             Gizmos.DrawWireSphere(transform.position, attackRadius);
 
         }
+
+        public void TakeDamage(float damage)
+        {
+            //todo remove
+        }
+
     }
 }

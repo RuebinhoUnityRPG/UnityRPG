@@ -162,6 +162,11 @@ namespace RPG.Characters
             float turnSpeed = Mathf.Lerp(stationaryTurnSpeed, movingTurnSpeed, forwardAmount);
             transform.Rotate(0, turnAmount * turnSpeed * Time.deltaTime, 0);
         }
+
+        public void Kill()
+        {
+            // to allow death signaling and stop movement
+        }
     }
 }
 
