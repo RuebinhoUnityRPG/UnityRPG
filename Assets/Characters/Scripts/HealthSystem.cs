@@ -32,6 +32,7 @@ namespace RPG.Characters
             animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
             characterMovement = GetComponent<CharacterMovement>();
+            currentHealthPoints = maxHealthPoints;
         }
 
         // Update is called once per frame

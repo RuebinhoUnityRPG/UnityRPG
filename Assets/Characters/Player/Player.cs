@@ -22,12 +22,11 @@ namespace RPG.Characters
         GameObject weaponObject;
         [SerializeField] AnimatorOverrideController animOverrideController = null;
 
+        SpecialAbilities abilities;
+
         Animator animator;
         const string ATTACK_TRIGGER = "Attack";
         const string DEFAULT_ATTACK = "DEFAULT ATTACK";
-
-        //Temp for debugging
-        [SerializeField] AbilityConfig[] abilities;
 
         Enemy enemy = null;
 
@@ -39,25 +38,18 @@ namespace RPG.Characters
 
         private void Start()
         {
+            abilities = GetComponent<SpecialAbilities>();
             animator = GetComponent<Animator>();
             RegisterForMouseClick();
             PutWeaponInHand(currentWeaponConfig);
             SetAttackAnimation();
-            AttachInitialAbilities();
             audioSource = GetComponent<AudioSource>();
-        }
-
-        private void AttachInitialAbilities()
-        {
-            for (int abilityIndex = 0; abilityIndex < abilities.Length; abilityIndex++)
-            {
-                abilities[abilityIndex].AttachAbilityTo(gameObject);
-            }
         }
 
         private void Update()
         {
             var healthPercentage = GetComponent<HealthSystem>().HealthAsPercentage;
+            print(healthPercentage);
             if (healthPercentage > Mathf.Epsilon)
             {
                 ScanForAbilityKeyDown();
@@ -66,11 +58,11 @@ namespace RPG.Characters
 
         private void ScanForAbilityKeyDown()
         {
-            for (int keyIndex = 1; keyIndex < abilities.Length; keyIndex++)
+            for (int keyIndex = 1; keyIndex < abilities.GetNumberOfAbilities(); keyIndex++)
             {
                 if (Input.GetKeyDown(keyIndex.ToString()))
                 {
-                    AttemptSpecialAbility(keyIndex);
+                    abilities.AttemptSpecialAbility(keyIndex);
                 }
             }
         }
@@ -98,21 +90,7 @@ namespace RPG.Characters
             }
             else if (Input.GetMouseButtonDown(1))
             {
-                AttemptSpecialAbility(0);
-            }
-        }
-
-        private void AttemptSpecialAbility(int abilityIndex)
-        {
-            var energyComponent = GetComponent<Energy>();
-            var energyCost = abilities[abilityIndex].GetEnergyCost();
-
-            if (energyComponent.IsEnergyAvailable(energyCost)) //TODO read from SO
-            {
-                energyComponent.ConsumeEnergy(energyCost);
-                //Use the ability
-                var abilityParams = new AbilityUseParams(enemy, baseDamage);
-                abilities[abilityIndex].Use(abilityParams);
+                abilities.AttemptSpecialAbility(0);
             }
         }
 
