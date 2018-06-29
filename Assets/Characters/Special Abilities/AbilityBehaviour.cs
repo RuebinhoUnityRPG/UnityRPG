@@ -43,6 +43,7 @@ namespace RPG.Characters
 
         protected void PlayAbilitySound()
         {
+            print("Ability Sound played");
             var abilitySound = config.GetRandomAudioClipToPlay();
             var audioSource = GetComponent<AudioSource>();
             audioSource.PlayOneShot(abilitySound);

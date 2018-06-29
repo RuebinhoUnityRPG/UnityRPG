@@ -12,6 +12,8 @@ namespace RPG.Characters
         [SerializeField] float maxEnergyPoints = 100f;
         [SerializeField] float regenPointsPerSecond = 1f;
         // todo add OutOfEnergySound;
+        [SerializeField] AudioClip[] outOfEnergySounds;
+        int outOfEnergyCounter = 0;
 
         float currentEnergyPoints;
         AudioSource audioSource;
@@ -35,7 +37,7 @@ namespace RPG.Characters
 
         private void Update()
         {
-            if(currentEnergyPoints < maxEnergyPoints)
+            if (currentEnergyPoints < maxEnergyPoints)
             {
                 RegenEnergy();
                 UpdateEnergyBar();
@@ -73,20 +75,37 @@ namespace RPG.Characters
             return abilities.Length;
         }
 
-        public void AttemptSpecialAbility(int abilityIndex)
+        public void AttemptSpecialAbility(int abilityIndex, GameObject target = null)
         {
             var energyCost = abilities[abilityIndex].GetEnergyCost();
 
-            if (energyCost <= currentEnergyPoints) //TODO read from SO
+            if (energyCost <= currentEnergyPoints)
             {
                 ConsumeEnergy(energyCost);
+                outOfEnergyCounter = 0;
+                print("ooec: " + outOfEnergyCounter);
                 //Use the ability
-                print("Using special ability: " + abilityIndex); //todo make work
-                //var abilityParams = new AbilityUseParams(enemy, baseDamage);
-                //abilities[abilityIndex].Use(abilityParams);
-            } else
+                print("Using special ability: " + abilityIndex);
+                abilities[abilityIndex].Use(target);
+
+
+            }
+            else
             {
-                //todo play out of energy sound
+                if (outOfEnergyCounter == 0)
+                {
+                    audioSource.PlayOneShot(outOfEnergySounds[0]);
+                    outOfEnergyCounter++;
+                }
+                else if (outOfEnergyCounter == 1)
+                {
+                    audioSource.PlayOneShot(outOfEnergySounds[1]);
+                    outOfEnergyCounter++;
+                }
+                else
+                {
+                    audioSource.PlayOneShot(outOfEnergySounds[2]);
+                }
             }
 
         }

@@ -2967,7 +2967,8 @@ MonoBehaviour:
   critHitMultiplierInPerCent: 200
   critParticleSystem: {fileID: 198194378386732236}
   critAudioClip: {fileID: 8300000, guid: 43d645ea770234348bb1e89d8ec19dc0, type: 3}
-  currentWeaponConfig: {fileID: 0}
+  currentWeaponConfig: {fileID: 11400000, guid: 1401c9de9849fb04781de7db2b961c1a,
+    type: 2}
   animOverrideController: {fileID: 22100000, guid: d73d0a34caa7cce428c8244fbed58be0,
     type: 2}
 --- !u!114 &114701201273466100

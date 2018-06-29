@@ -10,6 +10,7 @@ namespace RPG.Characters
 
         public override void Use(GameObject target)
         {
+            print("Ability Sound played");
             PlayAbilitySound();
             DealRadialDamage();
             PlayParticleEffect();

@@ -10,6 +10,7 @@ namespace RPG.Characters
 
         public override void Use(GameObject target)
         {
+            print("Ability Sound played");
             PlayAbilitySound();
             var playerHealth = player.GetComponent<HealthSystem>();
             playerHealth.Heal((config as SelfHealConfig).GetHealingPointsPerUse());
