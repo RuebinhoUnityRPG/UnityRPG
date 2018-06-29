@@ -6,7 +6,7 @@ using RPG.Core;
 
 namespace RPG.Characters
 {
-    public class Enemy : MonoBehaviour, IDamagable //todo remove IDmaagable
+    public class Enemy : MonoBehaviour
     {
 
 

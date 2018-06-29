@@ -8,7 +8,7 @@ namespace RPG.Characters
     {
         Player player = null;
 
-        public override void Use(AbilityUseParams abilityUseParams)
+        public override void Use(GameObject target)
         {
             PlayAbilitySound();
             var playerHealth = player.GetComponent<HealthSystem>();

@@ -8,14 +8,14 @@ namespace RPG.Characters
 {
     public class AOEAttackBehaviour : AbilityBehaviour {
 
-        public override void Use(AbilityUseParams abilityUseParams)
+        public override void Use(GameObject target)
         {
             PlayAbilitySound();
-            DealRadialDamage(abilityUseParams);
+            DealRadialDamage();
             PlayParticleEffect();
         }
 
-        private void DealRadialDamage(AbilityUseParams abilityUseParams)
+        private void DealRadialDamage()
         {
             print("AOE attack used by: " + gameObject.name);
             //static SphereCast to radius for targets
@@ -24,11 +24,11 @@ namespace RPG.Characters
             //foreach hit, if damagable, deal damage + player base dmg
             foreach (RaycastHit hit in hits)
             {
-                var damagable = hit.collider.gameObject.GetComponent<IDamagable>();
+                var damagable = hit.collider.gameObject.GetComponent<HealthSystem>();
                 bool hitPlayer = hit.collider.gameObject.GetComponent<Player>();
                 if (damagable != null && !hitPlayer)
                 {
-                    float damageToDeal = abilityUseParams.baseDamage + (config as AOEAttackConfig).GetDamageToEachTarget();
+                    float damageToDeal = (config as AOEAttackConfig).GetDamageToEachTarget();
                     damagable.TakeDamage(damageToDeal);
                 }
             }
