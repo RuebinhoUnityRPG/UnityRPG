@@ -5,12 +5,37 @@ using RPG.CameraUI; //TODO consider re-wiring
 
 namespace RPG.Characters
 {
-    [RequireComponent(typeof(NavMeshAgent))]
-    public class CharacterMovement : MonoBehaviour
+    [SelectionBase]
+    public class Character : MonoBehaviour
     {
-        [SerializeField] float stoppingDistance = 1f;
-        [SerializeField] float moveSpeedMultiplier = 0.7f;
+        [Header("Animator Setup Settings")]
+        [SerializeField]
+        RuntimeAnimatorController animatorController;
+        [SerializeField] AnimatorOverrideController animatorOverrideController;
+        [SerializeField] Avatar animatorCharacterAvatar;
+
+        [Header("AudioSource Setup Settings")]
+        [SerializeField]
+        float audioSourceSpatialBlend = 0f;
+
+        [Header("Capsule Collider Setup Settings")]
+        [SerializeField]
+        Vector3 colliderCenter = new Vector3(0, 1.03f, 0);
+        [SerializeField] float colliderRadius = 0.2f;
+        [SerializeField] float colliderHeight = 1.6f;
+
+        [Header("NavMeshAgent Setup Settings")]
+        [SerializeField]
+        float navMeshAgentSteeringSpeed = 1f;
+        [SerializeField] float navMeshAgentStoppingDistance = 1f;
+
+        [Header("Character Movement Settings")]
+        [SerializeField]
+        float moveSpeedMultiplier = 0.7f;
         [SerializeField] float animationSpeedMultiplier = 0.7f;
+        [SerializeField] float movingTurnSpeed = 360f;
+        [SerializeField] float stationaryTurnSpeed = 180f;
+        [SerializeField] float moveThreshold = 1f;
 
         Vector3 clickPoint;
         GameObject walkTarget;
@@ -21,34 +46,54 @@ namespace RPG.Characters
 
         bool isInDirectMode = false;
 
-        [SerializeField] float movingTurnSpeed = 360;
-        [SerializeField] float stationaryTurnSpeed = 180;
-        [SerializeField] float moveThreshold = 1f;
-
         float turnAmount;
         float forwardAmount;
         float m_MoveSpeedMultiplier = 1;
+
+        private void Awake()
+        {
+            AddRequiredComponents();
+        }
+
+        private void AddRequiredComponents()
+        {
+            animator = gameObject.AddComponent<Animator>();
+            animator.runtimeAnimatorController = animatorController;
+            animator.avatar = animatorCharacterAvatar;
+
+            var capsuleCollider = gameObject.AddComponent<CapsuleCollider>();
+            capsuleCollider.center = colliderCenter;
+            capsuleCollider.radius = colliderRadius;
+            capsuleCollider.height = colliderHeight;
+
+            myRigidbody = gameObject.AddComponent<Rigidbody>();
+            myRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+
+            var audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.spatialBlend = audioSourceSpatialBlend;
+
+            navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
+            navMeshAgent.speed = navMeshAgentSteeringSpeed;
+            navMeshAgent.stoppingDistance = navMeshAgentStoppingDistance;
+            navMeshAgent.autoBraking = false;
+
+            navMeshAgent.updatePosition = false;
+            navMeshAgent.updateRotation = false;
+
+        }
 
         private void Start()
         {
             CameraRaycaster cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
             walkTarget = new GameObject("Walktarget");
 
-            navMeshAgent = GetComponent<NavMeshAgent>();
-            navMeshAgent.updatePosition = false;
-            navMeshAgent.updateRotation = false;
-            navMeshAgent.stoppingDistance = stoppingDistance;
-
             cameraRaycaster.OnMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
             cameraRaycaster.OnMouseOverEnemyHit += OnMouseOverEnemyHit;
 
-            animator = GetComponent<Animator>();
             animator.applyRootMotion = true;
-
-            myRigidbody = GetComponent<Rigidbody>();
-            myRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         }
 
+        //todo move to player control
         private void OnMouseOverEnemyHit(Enemy enemy)
         {
             if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(1))
@@ -57,6 +102,7 @@ namespace RPG.Characters
             }
         }
 
+        //todo move to player control
         private void OnMouseOverPotentiallyWalkable(Vector3 destination)
         {
             if (Input.GetMouseButton(0))
@@ -70,12 +116,11 @@ namespace RPG.Characters
             if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
             {
                 Move(navMeshAgent.desiredVelocity);
-            } else
+            }
+            else
             {
                 Move(Vector3.zero);
             }
-
-
 
             //Commented Code is for direct input
 
@@ -112,7 +157,6 @@ namespace RPG.Characters
             {
                 //ProcessMouseMovement(); // Mouse movement
             }
-
         }
 
         //void ProcessDirectMovement()

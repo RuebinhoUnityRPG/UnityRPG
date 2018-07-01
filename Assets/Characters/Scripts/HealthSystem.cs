@@ -9,7 +9,7 @@ namespace RPG.Characters
 {
     public class HealthSystem : MonoBehaviour
     {
-        CharacterMovement characterMovement;
+        Character characterMovement;
 
         [SerializeField] float maxHealthPoints = 200f;
         [SerializeField] Image healthBar;
@@ -31,7 +31,7 @@ namespace RPG.Characters
         {
             animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
-            characterMovement = GetComponent<CharacterMovement>();
+            characterMovement = GetComponent<Character>();
             currentHealthPoints = maxHealthPoints;
         }
 
