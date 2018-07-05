@@ -49,7 +49,7 @@ namespace RPG.Characters
 
         private void OnTriggerEnter()
         {
-            FindObjectOfType<Player>().PutWeaponInHand(weaponConfig);
+            FindObjectOfType<PlayerControl>().PutWeaponInHand(weaponConfig);
             audioSource.PlayOneShot(weaponPickupSound);
         }
 

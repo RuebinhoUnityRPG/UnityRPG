@@ -23,11 +23,11 @@ namespace RPG.Characters
 
         bool isAttacking = false;
         float currentHealthPoints;
-        Player player = null;
+        PlayerControl player = null;
 
         private void Start()
         {
-            player = FindObjectOfType<Player>();
+            player = FindObjectOfType<PlayerControl>();
             //aiCharacterControl = GetComponent<AICharacterControl>();
         }
 

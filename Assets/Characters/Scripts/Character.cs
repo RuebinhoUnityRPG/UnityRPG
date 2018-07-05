@@ -8,6 +8,7 @@ namespace RPG.Characters
     [SelectionBase]
     public class Character : MonoBehaviour
     {
+        #region variables
         [Header("Animator Setup Settings")]
         [SerializeField]
         RuntimeAnimatorController animatorController;
@@ -37,7 +38,6 @@ namespace RPG.Characters
         [SerializeField] float stationaryTurnSpeed = 180f;
         [SerializeField] float moveThreshold = 1f;
 
-        Vector3 clickPoint;
         GameObject walkTarget;
         NavMeshAgent navMeshAgent;
 
@@ -49,6 +49,9 @@ namespace RPG.Characters
         float turnAmount;
         float forwardAmount;
         float m_MoveSpeedMultiplier = 1;
+
+        bool isAlive = true;
+        #endregion
 
         private void Awake()
         {
@@ -84,36 +87,13 @@ namespace RPG.Characters
 
         private void Start()
         {
-            CameraRaycaster cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
-            walkTarget = new GameObject("Walktarget");
-
-            cameraRaycaster.OnMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
-            cameraRaycaster.OnMouseOverEnemyHit += OnMouseOverEnemyHit;
-
             animator.applyRootMotion = true;
         }
 
-        //todo move to player control
-        private void OnMouseOverEnemyHit(Enemy enemy)
-        {
-            if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(1))
-            {
-                navMeshAgent.SetDestination(enemy.transform.position);
-            }
-        }
-
-        //todo move to player control
-        private void OnMouseOverPotentiallyWalkable(Vector3 destination)
-        {
-            if (Input.GetMouseButton(0))
-            {
-                navMeshAgent.SetDestination(destination);
-            }
-        }
 
         void Update()
         {
-            if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
+            if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance && isAlive)
             {
                 Move(navMeshAgent.desiredVelocity);
             }
@@ -171,12 +151,17 @@ namespace RPG.Characters
         //    character.Move(movement, false, false);
         //}
 
-        public void Move(Vector3 movement)
+        void Move(Vector3 movement)
         {
             SetForwardAndTurn(movement);
             ApplyExtraTurnRotation();
             // send input and other state parameters to the animator
             UpdateAnimator();
+        }
+
+        public void SetDestination(Vector3 worldPosition)
+        {
+            navMeshAgent.destination = worldPosition;
         }
 
         void SetForwardAndTurn(Vector3 movement)
@@ -210,6 +195,7 @@ namespace RPG.Characters
         public void Kill()
         {
             // to allow death signaling and stop movement
+            isAlive = false;
         }
     }
 }

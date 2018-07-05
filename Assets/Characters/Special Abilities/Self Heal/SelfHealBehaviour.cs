@@ -6,7 +6,7 @@ namespace RPG.Characters
 {
     public class SelfHealBehaviour : AbilityBehaviour
     {
-        Player player = null;
+        PlayerControl player = null;
 
         public override void Use(GameObject target)
         {
@@ -19,7 +19,7 @@ namespace RPG.Characters
 
         private void Start()
         {
-            player = GetComponent<Player>();
+            player = GetComponent<PlayerControl>();
         }
     }
 }
