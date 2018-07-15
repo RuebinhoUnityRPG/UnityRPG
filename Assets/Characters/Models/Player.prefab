@@ -942,10 +942,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4966276246169868}
-  - component: {fileID: 54814473619487902}
-  - component: {fileID: 136244040120530902}
-  - component: {fileID: 82694065311255436}
-  - component: {fileID: 195962446101758444}
   - component: {fileID: 114078577324978292}
   - component: {fileID: 114688623295465958}
   - component: {fileID: 114701201273466100}
@@ -2736,101 +2732,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1403493170594934}
   m_Mesh: {fileID: 4300000, guid: ffaf641b210f5ea41952cf36f1379d66, type: 3}
---- !u!54 &54814473619487902
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1707902364782986}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 1
---- !u!82 &82694065311255436
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1707902364782986}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3f12d3319ac1b8d48b7d8334f951924b, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!95 &95253429570955274
 Animator:
   serializedVersion: 3
@@ -2864,11 +2765,12 @@ MonoBehaviour:
     type: 2}
   animatorCharacterAvatar: {fileID: 9000000, guid: ffaf641b210f5ea41952cf36f1379d66,
     type: 3}
+  audioSourceSpatialBlend: 0
   colliderCenter: {x: 0, y: 1.03, z: 0}
   colliderRadius: 0.2
   colliderHeight: 1.6
-  audioSourceSpatialBlend: 0
-  stoppingDistance: 1
+  navMeshAgentSteeringSpeed: 1
+  navMeshAgentStoppingDistance: 1
   moveSpeedMultiplier: 0.7
   animationSpeedMultiplier: 1.5
   movingTurnSpeed: 540
@@ -2943,19 +2845,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c9a8aa2b1b1644aa6f96d760d88198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &136244040120530902
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1707902364782986}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 1.6
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!137 &137550274826002032
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -3114,27 +3003,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0068486333, y: -0.024668545, z: 0.08193302}
     m_Extent: {x: 1.119834, y: 0.31503037, z: 1.1248913}
   m_DirtyAABB: 0
---- !u!195 &195962446101758444
-NavMeshAgent:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1707902364782986}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.1
-  m_Speed: 1
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 1
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!198 &198080848529851144
 ParticleSystem:
   m_ObjectHideFlags: 1
