@@ -197,6 +197,11 @@ namespace RPG.Characters
             // to allow death signaling and stop movement
             isAlive = false;
         }
+
+        public AnimatorOverrideController GetAnimOverrideController()
+        {
+            return animatorOverrideController;
+        }
     }
 }
 

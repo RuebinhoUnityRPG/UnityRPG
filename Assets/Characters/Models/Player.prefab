@@ -946,6 +946,7 @@ GameObject:
   - component: {fileID: 114688623295465958}
   - component: {fileID: 114701201273466100}
   - component: {fileID: 114625609536816762}
+  - component: {fileID: 114114228711513934}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -2587,7 +2588,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1707902364782986}
   m_LocalRotation: {x: -0, y: -0.96692336, z: -0, w: -0.25506708}
-  m_LocalPosition: {x: 3.64, y: 8.64, z: -125.46}
+  m_LocalPosition: {x: 3.64, y: 9.49, z: -125.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4460190854830846}
@@ -2760,7 +2761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b125caf8891d444bc0a089d8636971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animatorController: {fileID: 9100000, guid: 84f9d613a6aa6934d8510a542fadac39, type: 2}
+  animatorController: {fileID: 9100000, guid: e2cf68ff4b1ffda45a77f7307dd789b9, type: 2}
   animatorOverrideController: {fileID: 22100000, guid: d73d0a34caa7cce428c8244fbed58be0,
     type: 2}
   animatorCharacterAvatar: {fileID: 9000000, guid: ffaf641b210f5ea41952cf36f1379d66,
@@ -2776,6 +2777,20 @@ MonoBehaviour:
   movingTurnSpeed: 540
   stationaryTurnSpeed: 360
   moveThreshold: 1
+--- !u!114 &114114228711513934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1707902364782986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82a74c7637f522e4c8d8b50ad905ac72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 20
+  currentWeaponConfig: {fileID: 11400000, guid: 1401c9de9849fb04781de7db2b961c1a,
+    type: 2}
 --- !u!114 &114625609536816762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2809,15 +2824,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7e65ec7d514a84fbedcf797bdceac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 20
   critChanceInPerCent: 20
   critHitMultiplierInPerCent: 200
   critParticleSystem: {fileID: 198194378386732236}
   critAudioClip: {fileID: 8300000, guid: 43d645ea770234348bb1e89d8ec19dc0, type: 3}
-  currentWeaponConfig: {fileID: 11400000, guid: 1401c9de9849fb04781de7db2b961c1a,
-    type: 2}
-  animOverrideController: {fileID: 22100000, guid: d73d0a34caa7cce428c8244fbed58be0,
-    type: 2}
 --- !u!114 &114701201273466100
 MonoBehaviour:
   m_ObjectHideFlags: 1
