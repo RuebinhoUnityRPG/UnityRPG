@@ -7,7 +7,6 @@ using RPG.CameraUI; //for mouse events
 using RPG.Core;
 using UnityEngine.SceneManagement;
 
-//todo extract weapon system
 namespace RPG.Characters
 {
     public class PlayerControl : MonoBehaviour
@@ -20,7 +19,7 @@ namespace RPG.Characters
         WeaponSystem weaponSystem;
         SpecialAbilities abilities;
 
-        Enemy enemy = null;
+        EnemyAI enemy = null;
 
         CameraRaycaster cameraRayCaster = null;
 
@@ -60,7 +59,7 @@ namespace RPG.Characters
             }
         }
 
-        void OnMouseOverEnemyHit(Enemy enemyToSet)
+        void OnMouseOverEnemyHit(EnemyAI enemyToSet)
         {
             this.enemy = enemyToSet;
 
