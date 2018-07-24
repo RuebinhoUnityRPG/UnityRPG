@@ -203,6 +203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &3098062
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -923,6 +925,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &38349020
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1976,6 +1980,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &78555659
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2541,6 +2547,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 7
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &96952347
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4152,6 +4160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 1
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &158266362
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4320,6 +4330,77 @@ Transform:
   m_PrefabParentObject: {fileID: 4489140927154420, guid: cdb35b1e4e9fbdf46b434c997b7fb214,
     type: 2}
   m_PrefabInternal: {fileID: 1706110483}
+--- !u!1 &164806465
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 164806466}
+  - component: {fileID: 164806468}
+  - component: {fileID: 164806467}
+  m_Layer: 0
+  m_Name: Dirty Old Hoe(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &164806466
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 164806465}
+  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2017178505}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &164806467
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 164806465}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 0754ff2960a855b4b9535c598af02f66, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &164806468
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 164806465}
+  m_Mesh: {fileID: 4300002, guid: eee292b300b8dfa41be00641ff83b2a1, type: 3}
 --- !u!1 &166709894
 GameObject:
   m_ObjectHideFlags: 0
@@ -5582,7 +5663,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 238471359}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.42, y: 12.379, z: -128.83}
+  m_LocalPosition: {x: 11.67, y: 11.972, z: -125.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 453526445}
@@ -7387,6 +7468,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &357298828
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -9349,6 +9432,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 4
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &433916660
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -9513,7 +9598,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 435895003}
-  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
+  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
   m_LocalPosition: {x: 0.000022246646, y: -0.00006150933, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12011,6 +12096,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 5
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &561832470
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -13717,7 +13804,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 651237697}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.32, y: 12.9, z: -136.34}
+  m_LocalPosition: {x: 7.32, y: 11.966, z: -134.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 453526445}
@@ -15454,6 +15541,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 5
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &741521985
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -16586,6 +16675,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 2.5
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &789439537
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -16948,7 +17039,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 806009926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.94, y: 12.94, z: -132.51}
+  m_LocalPosition: {x: -2.94, y: 12.35, z: -131.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 453526445}
@@ -17465,6 +17556,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &836341768
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -17833,6 +17926,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &847929628
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -18075,6 +18170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &854039046
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -21502,6 +21599,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &996405519
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -23642,6 +23741,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &1087918512
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -24360,6 +24461,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &1105415612
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -27761,6 +27864,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &1264521189
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -29047,6 +29152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &1321739254
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -29615,77 +29722,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4813294931787184, guid: 12f912cf22db3d948a728f686b6a022c,
     type: 2}
   m_PrefabInternal: {fileID: 1340529232}
---- !u!1 &1344523115
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1344523116}
-  - component: {fileID: 1344523118}
-  - component: {fileID: 1344523117}
-  m_Layer: 0
-  m_Name: Dirty Old Hoe(Clone)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1344523116
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1344523115}
-  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2017178505}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &1344523117
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1344523115}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 0754ff2960a855b4b9535c598af02f66, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1344523118
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1344523115}
-  m_Mesh: {fileID: 4300002, guid: eee292b300b8dfa41be00641ff83b2a1, type: 3}
 --- !u!1 &1345843993
 GameObject:
   m_ObjectHideFlags: 0
@@ -29721,6 +29757,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &1345843995
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -30464,6 +30502,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &1370497299
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -30733,6 +30773,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 7
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &1386686607
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -34522,6 +34564,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &1591470746
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -34946,6 +34990,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &1608289356
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -35439,6 +35485,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 2.5
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &1627697136
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -36990,6 +37038,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 8
+  patrolPathStart: {fileID: 453526446}
+  waypointTolerance: 2
 --- !u!1 &1701233927
 GameObject:
   m_ObjectHideFlags: 0
@@ -37790,6 +37840,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &1750075762
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -39533,6 +39585,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 5
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &1833435878
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -40473,7 +40527,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1877514283}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.87, y: 12.24, z: -122.77}
+  m_LocalPosition: {x: 0.17, y: 11.903, z: -120}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 453526445}
@@ -41147,6 +41201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 5
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &1912187094
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -43457,7 +43513,7 @@ Transform:
   m_LocalPosition: {x: 4.421404, y: 9.261169, z: -121.86337}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1344523116}
+  - {fileID: 164806466}
   m_Father: {fileID: 1255020372}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 33.327003, y: -271.851, z: 0}
@@ -43590,6 +43646,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 7
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &2022176656
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -44771,6 +44829,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 10
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &2072314506
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -46548,6 +46608,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 5
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &2138138760
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -47027,6 +47089,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 7
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!195 &2146713433
 NavMeshAgent:
   m_ObjectHideFlags: 0

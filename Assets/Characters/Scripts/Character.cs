@@ -80,7 +80,6 @@ namespace RPG.Characters
             navMeshAgent.stoppingDistance = navMeshAgentStoppingDistance;
             navMeshAgent.autoBraking = false;
 
-            navMeshAgent.updatePosition = false;
             navMeshAgent.updateRotation = false;
 
         }
