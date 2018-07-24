@@ -201,6 +201,11 @@ namespace RPG.Characters
         {
             return animatorOverrideController;
         }
+
+        public float getAnimSpeedMultiplier()
+        {
+            return animator.speed;
+        }
     }
 }
 
