@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -22,7 +21,6 @@ namespace RPG.Characters
         Animator animator;
         Character character;
 
-        // Use this for initialization
         void Start()
         {
             character = GetComponent<Character>();
@@ -30,10 +28,36 @@ namespace RPG.Characters
             SetAttackAnimation();
         }
 
-        // Update is called once per frame
         void Update()
         {
             //todo check continously if we should still be attacking
+
+            bool targetIsDead;
+            bool targetIsOutOfRange;
+
+            if(target == null)
+            {
+                targetIsDead = false;
+                targetIsOutOfRange = false;
+            }
+            else
+            {
+                //test if target is dead
+                var targetHealth = target.GetComponent<HealthSystem>().HealthAsPercentage;
+                targetIsDead = targetHealth <= Mathf.Epsilon;
+
+                //test if target is out of range
+                var distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+                targetIsOutOfRange = distanceToTarget > GetCurrentWeaponConfig().GetMaxAttackRange();
+            }
+
+            float characterHealth = GetComponent<HealthSystem>().HealthAsPercentage;
+            bool characterIsDead = (characterHealth <= Mathf.Epsilon);
+
+            if(characterIsDead || targetIsDead ||targetIsOutOfRange)
+            {
+                StopAllCoroutines();
+            }
         }
 
         private void SetAttackAnimation()
