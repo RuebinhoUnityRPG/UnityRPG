@@ -11,7 +11,6 @@ namespace RPG.Characters
         [SerializeField] Image energyOrbImage = null;
         [SerializeField] float maxEnergyPoints = 100f;
         [SerializeField] float regenPointsPerSecond = 1f;
-        // todo add OutOfEnergySound;
         [SerializeField] AudioClip[] outOfEnergySounds;
         int outOfEnergyCounter = 0;
 

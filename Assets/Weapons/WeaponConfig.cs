@@ -15,6 +15,7 @@ namespace RPG.Characters
         [SerializeField] float minTimeBetweenHits = 0.5f;
         [SerializeField] float maxAttackRange = 2f;
         [SerializeField] float additionalDamage = 10f;
+        [SerializeField] float damageDelay = 0.5f;
 
         public GameObject GetWeaponPrefab()
         {
@@ -41,6 +42,11 @@ namespace RPG.Characters
         public float GetAdditionalDamage()
         {
             return additionalDamage;
+        }
+
+        public float GetDamageDelay()
+        {
+            return damageDelay;
         }
 
         // erases all animation events that are in imported asset pack

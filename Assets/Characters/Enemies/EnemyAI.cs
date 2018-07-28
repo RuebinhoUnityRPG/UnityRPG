@@ -14,6 +14,7 @@ namespace RPG.Characters
         [SerializeField] float chaseRadius = 8f;
         [SerializeField] WaypointContainer patrolPathStart;
         [SerializeField] float waypointTolerance = 2.0f;
+        [SerializeField] float waypointWaitTime = 0.5f;
         
         float distanceToPlayer;
         int nextWaypointIndex;
@@ -44,6 +45,7 @@ namespace RPG.Characters
                 //stop what we're doing
                 // start patrolling
                 StopAllCoroutines();
+                weaponSystem.StopAttacking();
                 state = State.patrolling;
                 StartCoroutine(Patrol());
             }
@@ -53,6 +55,8 @@ namespace RPG.Characters
                 //stop what we're doing
                 // chase the player
                 StopAllCoroutines();
+                weaponSystem.StopAttacking();
+                state = State.chasing;
                 StartCoroutine(ChasePlayer());
 
             }
@@ -63,6 +67,7 @@ namespace RPG.Characters
                 // attack the player
                 StopAllCoroutines();
                 state = State.attacking;
+                weaponSystem.AttackTarget(player.gameObject);
             }
 
         }
@@ -80,7 +85,7 @@ namespace RPG.Characters
         {
             state = State.patrolling;
             
-            while(true)
+            while(patrolPathStart != null)
             {
                 //work out where to go next
                 //tell char to go there
@@ -91,7 +96,7 @@ namespace RPG.Characters
                 character.SetDestination(nextWaypointPosition);
                 CycleWaypointsWhenClose(nextWaypointPosition);
 
-                yield return new WaitForSeconds(0.5f); // todo parameterize
+                yield return new WaitForSeconds(waypointWaitTime);
 
             }
         }
@@ -114,11 +119,6 @@ namespace RPG.Characters
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, currentWeaponRange);
 
-        }
-
-        public void TakeDamage(float damage)
-        {
-            //todo remove
         }
 
     }

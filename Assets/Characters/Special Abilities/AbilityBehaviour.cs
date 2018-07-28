@@ -25,7 +25,7 @@ namespace RPG.Characters
             //Instanciate ParticleSystem prefab attached to the player
             var particlePrefab = config.GetParticleSystemPrefab();
             var particleObject = Instantiate(particlePrefab, transform.position, particlePrefab.transform.rotation);
-            //TODO decide if pareticle systems attached to player
+
             particleObject.transform.parent = transform; // set world space in prefab if required
             //Get the particle system component and play it
             particleObject.GetComponent<ParticleSystem>().Play();

@@ -30,7 +30,6 @@ namespace RPG.Characters
 
         void Update()
         {
-            //todo check continously if we should still be attacking
 
             bool targetIsDead;
             bool targetIsOutOfRange;
@@ -113,7 +112,7 @@ namespace RPG.Characters
         {
             transform.LookAt(target.transform);
             animator.SetTrigger(ATTACK_TRIGGER);
-            float damageDelay = 1.0f;
+            float damageDelay = currentWeaponConfig.GetDamageDelay();
             SetAttackAnimation();
             StartCoroutine(DamageAfterDelay(damageDelay));
         }
@@ -124,7 +123,6 @@ namespace RPG.Characters
             target.GetComponent<HealthSystem>().TakeDamage(CalculateDamage());
         }
 
-        //todo use co-routines for move and attack
         private void AttackTarget()
         {
             if (Time.time - lastHitTime > currentWeaponConfig.GetMinTimeBetweenHits())
@@ -167,6 +165,11 @@ namespace RPG.Characters
             Assert.IsFalse(numberOfDominantHands < 1, "Multiple dominantHands found, please remove until one is left!");
 
             return dominantHands[0].gameObject;
+        }
+
+        public void StopAttacking()
+        {
+            StopAllCoroutines();
         }
     }
 }

@@ -1,29 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Assertions;
 using RPG.CameraUI; //for mouse events
-using RPG.Core;
-using UnityEngine.SceneManagement;
 
 namespace RPG.Characters
 {
     public class PlayerControl : MonoBehaviour
     {
-        [Range(0f, 100f)] [SerializeField] float critChanceInPerCent = 20f;
-        [SerializeField] float critHitMultiplierInPerCent = 125f;
-        [SerializeField] ParticleSystem critParticleSystem = null;
-        [SerializeField] AudioClip critAudioClip = null;
-
         WeaponSystem weaponSystem;
         SpecialAbilities abilities;
-
-        EnemyAI enemy = null;
-
-        CameraRaycaster cameraRayCaster = null;
-
-        AudioSource audioSource;
 
         Character character;
 
@@ -33,12 +17,11 @@ namespace RPG.Characters
             weaponSystem = GetComponent<WeaponSystem>();
             abilities = GetComponent<SpecialAbilities>();
             RegisterForMouseEvents();
-            audioSource = GetComponent<AudioSource>();
         }
 
         private void RegisterForMouseEvents()
         {
-            cameraRayCaster = FindObjectOfType<CameraRaycaster>();
+            var cameraRayCaster = FindObjectOfType<CameraRaycaster>();
             cameraRayCaster.OnMouseOverEnemyHit += OnMouseOverEnemyHit;
             cameraRayCaster.OnMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
         }
@@ -61,16 +44,50 @@ namespace RPG.Characters
 
         void OnMouseOverEnemyHit(EnemyAI enemyToSet)
         {
-            this.enemy = enemyToSet;
-
             if (Input.GetMouseButton(0) && IsTargetInRange(enemyToSet.gameObject))
             {
-                weaponSystem.AttackTarget(enemy.gameObject);
+                weaponSystem.AttackTarget(enemyToSet.gameObject);
             }
-            else if (Input.GetMouseButtonDown(1))
+            else if(Input.GetMouseButton(0) && !IsTargetInRange(enemyToSet.gameObject))
             {
-                abilities.AttemptSpecialAbility(0);
+                //move and attack
+                StartCoroutine(MoveAndAttackTarget(enemyToSet));
+
             }
+            else if (Input.GetMouseButtonDown(1) && IsTargetInRange(enemyToSet.gameObject))
+            {
+                abilities.AttemptSpecialAbility(0, enemyToSet.gameObject);
+            }
+            else if (Input.GetMouseButtonDown(1) && !IsTargetInRange(enemyToSet.gameObject))
+            {
+                //move and special ability
+                StartCoroutine(MoveAndPowerAttackTarget(enemyToSet));
+            }
+
+        }
+
+        IEnumerator MoveIfTargetOutOfRange(GameObject target)
+        {
+            character.SetDestination(target.transform.position);
+            
+            while (!IsTargetInRange(target.gameObject))
+            {
+                yield return new WaitForEndOfFrame();
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        IEnumerator MoveAndAttackTarget(EnemyAI enemy)
+        {
+            yield return StartCoroutine(MoveIfTargetOutOfRange(enemy.gameObject));
+            weaponSystem.AttackTarget(enemy.gameObject);
+        }
+
+        IEnumerator MoveAndPowerAttackTarget(EnemyAI enemy)
+        {
+            yield return StartCoroutine(MoveIfTargetOutOfRange(enemy.gameObject));
+            abilities.AttemptSpecialAbility(0, enemy.gameObject);
         }
 
         bool IsTargetInRange(GameObject target)

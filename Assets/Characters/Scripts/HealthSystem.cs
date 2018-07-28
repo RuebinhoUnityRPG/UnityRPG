@@ -59,7 +59,6 @@ namespace RPG.Characters
 
         public void TakeDamage(float damage)
         {
-
             bool charDies = (currentHealthPoints - damage <= 0); // must ask before reducing health
 
             currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
@@ -82,7 +81,6 @@ namespace RPG.Characters
 
         IEnumerator KillCharacter()
         {
-            StopAllCoroutines();
             characterMovement.Kill();
 
             //Trigger Death Animation (optional)
@@ -109,9 +107,6 @@ namespace RPG.Characters
             audioSource.clip = deathSound;
             audioSource.Play();
             Debug.Log(audioSource.clip);
-
-            
-            
         }
     }
 }

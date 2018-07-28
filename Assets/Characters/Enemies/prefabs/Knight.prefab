@@ -355,10 +355,8 @@ GameObject:
   - component: {fileID: 95411782603622098}
   - component: {fileID: 54526254892200924}
   - component: {fileID: 136458425125666722}
-  - component: {fileID: 114568084395765298}
   - component: {fileID: 195466504221027548}
   - component: {fileID: 114213259296635552}
-  - component: {fileID: 114787607402937976}
   m_Layer: 9
   m_Name: Knight
   m_TagString: Untagged
@@ -820,14 +818,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 4
-  attackDamagePerShot: 100
-  attackRadius: 1.5
-  firingPeriodInSeconds: 2.5
-  firingPeriodVariation: 0
-  AimOffset: {x: 0, y: 1, z: 0}
-  projectileToUse: {fileID: 1251136856252538, guid: f3ca5ccd138fb054c952d040a7dbca50,
-    type: 2}
-  projectileSocket: {fileID: 1867698479487712}
+  patrolPathStart: {fileID: 0}
+  waypointTolerance: 2
 --- !u!114 &114255043797475408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -844,37 +836,6 @@ MonoBehaviour:
   triggerRadius: 5
   isOneTimeOnly: 1
   hasPlayed: 0
---- !u!114 &114568084395765298
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1872735844661664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MovingTurnSpeed: 1800
-  m_StationaryTurnSpeed: 900
-  m_JumpPower: 6
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 0.5
-  m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 1
---- !u!114 &114787607402937976
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1872735844661664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5335f0882fe4d478883cc8c58ce906, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!136 &136458425125666722
 CapsuleCollider:
   m_ObjectHideFlags: 1
