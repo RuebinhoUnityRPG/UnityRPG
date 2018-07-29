@@ -362,6 +362,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4316465570986560}
+  - component: {fileID: 114316650848449088}
   m_Layer: 0
   m_Name: Hand_R
   m_TagString: Untagged
@@ -598,8 +599,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1197378845879412}
   m_LocalRotation: {x: -0, y: -0.96692336, z: -0, w: -0.25506708}
-  m_LocalPosition: {x: 17.745392, y: 8.002197, z: -129.72629}
-  m_LocalScale: {x: 0.99999976, y: 1, z: 0.99999976}
+  m_LocalPosition: {x: -2.1381307, y: 4.4919896, z: -48.056725}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224417335980336902}
   - {fileID: 4921496753074192}
@@ -812,6 +813,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: be18774aba260474f8586e37e149cf89, type: 3}
   - {fileID: 8300000, guid: fbc8cd4e8380b3d4b800db50457cf0e6, type: 3}
   deathVanishSeconds: 3
+--- !u!114 &114316650848449088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1898294154860380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c9a8aa2b1b1644aa6f96d760d88198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114573975096920254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -851,7 +863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 20
-  currentWeaponConfig: {fileID: 11400000, guid: 4f5f19850fa988a4ea7ba63410586d2d,
+  currentWeaponConfig: {fileID: 11400000, guid: 96207e9718e672c4ebeebd21ab8241b6,
     type: 2}
 --- !u!114 &114710074089728550
 MonoBehaviour:

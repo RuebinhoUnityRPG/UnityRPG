@@ -59,6 +59,7 @@ namespace RPG.Characters
 
         public void TakeDamage(float damage)
         {
+            print("taking damage  " + gameObject);
             bool charDies = (currentHealthPoints - damage <= 0); // must ask before reducing health
 
             currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);

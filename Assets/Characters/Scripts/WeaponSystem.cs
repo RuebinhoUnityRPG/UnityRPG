@@ -81,7 +81,7 @@ namespace RPG.Characters
         public void AttackTarget(GameObject targetToAttack)
         {
             target = targetToAttack;
-            //print("Attacking Target: " + target);
+            print("Attacking Target: " + target);
             StartCoroutine(AttackTargetRepeatedly());
         }
 
@@ -121,6 +121,7 @@ namespace RPG.Characters
         {
             yield return new WaitForSecondsRealtime(damageDelay);
             target.GetComponent<HealthSystem>().TakeDamage(CalculateDamage());
+            print("damage after delay for " + target);
         }
 
         private void AttackTarget()
@@ -161,8 +162,8 @@ namespace RPG.Characters
             var dominantHands = GetComponentsInChildren<DominantHand>();
             int numberOfDominantHands = dominantHands.Length;
             // handle 0
-            Assert.IsFalse(numberOfDominantHands <= 0, "No dominant hand found, please add one!");
-            Assert.IsFalse(numberOfDominantHands < 1, "Multiple dominantHands found, please remove until one is left!");
+            Assert.IsFalse(numberOfDominantHands <= 0, "No dominant hand found, please add one!" + gameObject);
+            Assert.IsFalse(numberOfDominantHands < 1, "Multiple dominantHands found, please remove until one is left!" + gameObject);
 
             return dominantHands[0].gameObject;
         }
