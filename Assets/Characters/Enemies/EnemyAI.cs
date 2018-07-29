@@ -21,7 +21,7 @@ namespace RPG.Characters
 
         float currentWeaponRange = 4f;
 
-        enum State { attacking, chasing, patrolling, idle};
+        enum State {attacking, chasing, patrolling, idle};
         State state = State.idle;
 
         PlayerControl player = null;
@@ -66,7 +66,7 @@ namespace RPG.Characters
                 //stop what we're doing
                 // attack the player
                 StopAllCoroutines();
-                state = State.attacking;
+                //state = State.attacking;
                 weaponSystem.AttackTarget(player.gameObject);
             }
 

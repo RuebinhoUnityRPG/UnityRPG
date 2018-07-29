@@ -669,7 +669,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1477827329248924}
   m_LocalRotation: {x: -0, y: -0.96692336, z: -0, w: -0.25506708}
-  m_LocalPosition: {x: 45.678505, y: 3.631981, z: 7.0958023}
+  m_LocalPosition: {x: -3.8966908, y: 11.686508, z: -110.848656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224537462174029392}
@@ -847,7 +847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a74c7637f522e4c8d8b50ad905ac72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 20
+  baseDamage: 7
   currentWeaponConfig: {fileID: 11400000, guid: 1401c9de9849fb04781de7db2b961c1a,
     type: 2}
 --- !u!114 &114584350911569168

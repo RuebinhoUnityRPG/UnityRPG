@@ -81,7 +81,6 @@ namespace RPG.Characters
         public void AttackTarget(GameObject targetToAttack)
         {
             target = targetToAttack;
-            print("Attacking Target: " + target);
             StartCoroutine(AttackTargetRepeatedly());
         }
 
@@ -101,6 +100,7 @@ namespace RPG.Characters
                 if (isTimeToHitAgain)
                 {
                     AttackTargetOnce();
+                    print(lastHitTime);
                     lastHitTime = Time.time;
                 }
 
@@ -119,20 +119,21 @@ namespace RPG.Characters
 
         private IEnumerator DamageAfterDelay(float damageDelay)
         {
+            print("Attacking Target: " + target);
             yield return new WaitForSecondsRealtime(damageDelay);
             target.GetComponent<HealthSystem>().TakeDamage(CalculateDamage());
             print("damage after delay for " + target);
         }
 
-        private void AttackTarget()
-        {
-            if (Time.time - lastHitTime > currentWeaponConfig.GetMinTimeBetweenHits())
-            {
-                SetAttackAnimation();
-                animator.SetTrigger(ATTACK_TRIGGER);
-                lastHitTime = Time.time;
-            }
-        }
+        //private void AttackTarget()
+        //{
+        //    if (Time.time - lastHitTime > currentWeaponConfig.GetMinTimeBetweenHits())
+        //    {
+        //        SetAttackAnimation();
+        //        animator.SetTrigger(ATTACK_TRIGGER);
+        //        lastHitTime = Time.time;
+        //    }
+        //}
 
         private float CalculateDamage()
         {
