@@ -774,8 +774,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1946e1c1bae1c34ba2666ebb3463952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCanvasPrefab: {fileID: 1311539807392560, guid: 9a9d70d10b9331d469e57254147e0430,
-    type: 2}
 --- !u!114 &114213259296635552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -790,6 +788,7 @@ MonoBehaviour:
   chaseRadius: 7
   patrolPathStart: {fileID: 0}
   waypointTolerance: 2
+  waypointWaitTime: 0.5
 --- !u!136 &136458425125666722
 CapsuleCollider:
   m_ObjectHideFlags: 1
