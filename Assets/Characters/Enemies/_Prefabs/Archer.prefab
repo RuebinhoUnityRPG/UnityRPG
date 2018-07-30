@@ -958,15 +958,14 @@ MonoBehaviour:
   maxHealthPoints: 200
   healthBar: {fileID: 114118385857263926}
   damageSounds:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 17924a8442f265c42b31ce68659a4bf0, type: 3}
   - {fileID: 8300000, guid: 50441caf115f99145b85ab496dc2be54, type: 3}
   - {fileID: 8300000, guid: c8ba32a166ab80a49abb7198a0e0ad03, type: 3}
   - {fileID: 8300000, guid: 8e6e5622c20271d4eb499575559430ac, type: 3}
   - {fileID: 8300000, guid: 2c9eb720ec0d5cf47a9ba1c15c54a709, type: 3}
   - {fileID: 8300000, guid: d7898fd4be7857846b50601dbd98c646, type: 3}
-  - {fileID: 8300000, guid: 17924a8442f265c42b31ce68659a4bf0, type: 3}
   deathSounds:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 065c51e88390d914dbb43a2970c69d8d, type: 3}
   - {fileID: 8300000, guid: 71ee760e1d33b7f4085cb5713e08b1f0, type: 3}
   - {fileID: 8300000, guid: 21772efe0b0dbf64680998ae36d8e1fe, type: 3}
   - {fileID: 8300000, guid: 1482234f78169394194a4f936fdcd725, type: 3}
@@ -977,7 +976,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1c5f514b78f97464492cecc10fddb135, type: 3}
   - {fileID: 8300000, guid: 3bed0fb36cb74a343aa150a2d12a53e2, type: 3}
   - {fileID: 8300000, guid: 86d63a53c977f6e4190e8575776a0058, type: 3}
-  - {fileID: 8300000, guid: 065c51e88390d914dbb43a2970c69d8d, type: 3}
   deathVanishSeconds: 3
 --- !u!114 &114622005401499188
 MonoBehaviour:
