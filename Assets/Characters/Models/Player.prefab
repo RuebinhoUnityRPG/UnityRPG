@@ -2774,8 +2774,8 @@ MonoBehaviour:
   navMeshAgentStoppingDistance: 1
   moveSpeedMultiplier: 0.7
   animationSpeedMultiplier: 1.5
-  movingTurnSpeed: 540
-  stationaryTurnSpeed: 360
+  movingTurnSpeed: 1000
+  stationaryTurnSpeed: 800
   moveThreshold: 1
 --- !u!114 &114114228711513934
 MonoBehaviour:
@@ -2835,7 +2835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d18bb5ca98f004f83a671676993dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 2000
+  maxHealthPoints: 200
   healthBar: {fileID: 0}
   damageSounds:
   - {fileID: 8300000, guid: ef751c07d787eed429a2be456bc0765d, type: 3}

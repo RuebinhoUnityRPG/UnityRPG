@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 92981634787891136}
   - component: {fileID: 124345684728497924}
   - component: {fileID: 81358705483708878}
-  - component: {fileID: 114801875446179588}
   - component: {fileID: 114631599344270452}
   m_Layer: 0
   m_Name: Main Camera
@@ -54,13 +53,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1429731055654378}
-  m_LocalRotation: {x: 0.34226608, y: 0, z: 0, w: 0.9396031}
-  m_LocalPosition: {x: 0, y: 8.3, z: -10.2}
+  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 0, y: 11, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4687207318011324}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 40.03, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
 --- !u!4 &4687207318011324
 Transform:
   m_ObjectHideFlags: 1
@@ -110,7 +109,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
 --- !u!81 &81358705483708878
 AudioListener:
   m_ObjectHideFlags: 1
@@ -147,21 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02853f5d34bd8f429969ac34c466d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerPriorities: 090000000a00000008000000
---- !u!114 &114801875446179588
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1429731055654378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4dc41da45c7dad4cac53d5077939d8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   walkCursor: {fileID: 2800000, guid: 4a19ac72c491aaf4493bad1d24578bbc, type: 3}
-  attackCursor: {fileID: 2800000, guid: 65584703134766a468a39802e52426df, type: 3}
-  unknownCursor: {fileID: 2800000, guid: 0f0da2ad5ae6c754ebf4f5af601eed1f, type: 3}
+  enemyCursor: {fileID: 2800000, guid: 65584703134766a468a39802e52426df, type: 3}
   cursorHotspot: {x: 0, y: 0}
 --- !u!124 &124345684728497924
 Behaviour:
