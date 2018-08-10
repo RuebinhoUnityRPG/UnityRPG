@@ -40,7 +40,11 @@ namespace RPG.Characters
             WeaponSystem weaponSystem = GetComponent<WeaponSystem>();
             currentWeaponRange = weaponSystem.GetCurrentWeaponConfig().GetMaxAttackRange();
 
-            if (distanceToPlayer > chaseRadius && state != State.patrolling)
+            bool playerInWeaponCircle = distanceToPlayer <= currentWeaponRange;
+            bool playerInChaseCircle = distanceToPlayer > currentWeaponRange && distanceToPlayer <= chaseRadius;
+            bool playerOutsideChaseCircle = distanceToPlayer > chaseRadius;
+
+            if (playerOutsideChaseCircle && state != State.patrolling)
             {
                 //stop what we're doing
                 // start patrolling
@@ -50,7 +54,7 @@ namespace RPG.Characters
                 StartCoroutine(Patrol());
             }
 
-            if (distanceToPlayer <= chaseRadius && state != State.chasing)
+            if (playerInChaseCircle && state != State.chasing)
             {
                 //stop what we're doing
                 // chase the player
@@ -61,12 +65,12 @@ namespace RPG.Characters
 
             }
 
-            if (distanceToPlayer <= currentWeaponRange && state != State.attacking)
+            if (playerInWeaponCircle && state != State.attacking)
             {
                 //stop what we're doing
                 // attack the player
                 StopAllCoroutines();
-                //state = State.attacking;
+                state = State.attacking;
                 weaponSystem.AttackTarget(player.gameObject);
             }
 

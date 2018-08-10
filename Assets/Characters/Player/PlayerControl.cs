@@ -100,7 +100,7 @@ namespace RPG.Characters
         {
             if (Input.GetMouseButton(0))
             {
-                print("i wanna run!");
+                weaponSystem.StopAttacking();
                 character.SetDestination(destination);
             }
         }
