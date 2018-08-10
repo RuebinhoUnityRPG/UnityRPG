@@ -514,7 +514,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1025028441135012}
   m_LocalRotation: {x: -0, y: -0.96692336, z: -0, w: -0.25506708}
-  m_LocalPosition: {x: 12.066017, y: 3.6719894, z: 4.3109207}
+  m_LocalPosition: {x: 26.122566, y: 14.47199, z: -92.70614}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4891362299720444}
@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d18bb5ca98f004f83a671676993dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 200
+  maxHealthPoints: 40
   healthBar: {fileID: 114783303046995728}
   damageSounds:
   - {fileID: 8300000, guid: acd6097bb0714bf4cabc9c2baaa36c58, type: 3}
@@ -801,8 +801,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a74c7637f522e4c8d8b50ad905ac72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 5
-  currentWeaponConfig: {fileID: 11400000, guid: 1401c9de9849fb04781de7db2b961c1a,
+  baseDamage: 10
+  currentWeaponConfig: {fileID: 11400000, guid: 9a6f8945da9ed1a4f89823c39bbaab5b,
     type: 2}
 --- !u!114 &114444288173476284
 MonoBehaviour:

@@ -777,7 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a833d6782c3148b4e9ad7f9161082fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: a5a59ee3887580642b28f95ee38ef956, type: 3}
+  clip: {fileID: 8300000, guid: e7134c8007bd16c4e828b8eec571559b, type: 3}
   layerFilter: 11
   triggerRadius: 5
   isOneTimeOnly: 1
@@ -793,7 +793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d18bb5ca98f004f83a671676993dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 200
+  maxHealthPoints: 60
   healthBar: {fileID: 114113176534340528}
   damageSounds:
   - {fileID: 8300000, guid: d4d3d21aabc7d244ca8c857198a3be8f, type: 3}
@@ -860,8 +860,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a74c7637f522e4c8d8b50ad905ac72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 4
-  currentWeaponConfig: {fileID: 11400000, guid: 96207e9718e672c4ebeebd21ab8241b6,
+  baseDamage: 5
+  currentWeaponConfig: {fileID: 11400000, guid: a14150026310ab446bcfc6ab2e2edc16,
     type: 2}
 --- !u!114 &114710074089728550
 MonoBehaviour:

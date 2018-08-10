@@ -955,7 +955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d18bb5ca98f004f83a671676993dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 200
+  maxHealthPoints: 28
   healthBar: {fileID: 114118385857263926}
   damageSounds:
   - {fileID: 8300000, guid: 17924a8442f265c42b31ce68659a4bf0, type: 3}
@@ -999,8 +999,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a74c7637f522e4c8d8b50ad905ac72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 8
-  currentWeaponConfig: {fileID: 11400000, guid: 4f5f19850fa988a4ea7ba63410586d2d,
+  baseDamage: 15
+  currentWeaponConfig: {fileID: 11400000, guid: ca877da8c1f3fc3429e8958691f6a170,
     type: 2}
 --- !u!137 &137252648272623340
 SkinnedMeshRenderer:
